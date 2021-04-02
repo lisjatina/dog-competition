@@ -8,4 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class A3 {
+    private Integer length;
+    private Double dogTime;
+    private Double speed;
+    private Integer refusal; //если три отказа - disq
+    private Integer mistake;
+    private String disq;
 }

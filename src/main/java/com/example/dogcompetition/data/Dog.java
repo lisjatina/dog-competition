@@ -18,4 +18,6 @@ public class Dog {
     private String microchip;
     //возможно для начала поменять на стринг
     private Level level;
+
+
 }
