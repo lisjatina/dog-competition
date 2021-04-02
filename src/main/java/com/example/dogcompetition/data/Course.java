@@ -16,6 +16,15 @@ public class Course {
     private Integer mistake;
     private String disq;
 
+    //
+    public Double calculateTimePenalties(){
+
+    }
+    //
+    public Double calculateAllPenalties (){
+
+    }
+
     //если собака снялась
     public void disqualified (Double time){
         if (getDogTime() == 500){

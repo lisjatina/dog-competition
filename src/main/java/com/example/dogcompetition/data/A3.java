@@ -7,12 +7,5 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Competition {
-
-    private Course course;
-    private A3 courseA3;
-
-    public void startCompetition(){
-    course.calculateStandardTime(200,3.6);
-    }
+public class A3 {
 }
