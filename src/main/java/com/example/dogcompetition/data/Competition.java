@@ -15,4 +15,8 @@ public class Competition {
     public void startCompetition(){
     course.calculateStandardTime(200,3.6);
     }
+
+    public void startA3(){
+
+    }
 }
