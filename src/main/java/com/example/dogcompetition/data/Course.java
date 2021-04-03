@@ -19,7 +19,7 @@ public class Course {
     // может иметь отрицательное значение! В случае, если значение меньше нуля, то не учитывается в подсчете штрафов
     //на трассе, иначе общее количество штрафов тоже получим отрицательное
     public Double calculateTimePenalties(Double dogTime) {
-
+return null;
     }
 
     //складываем штраф за время(если больше нуля)
@@ -51,10 +51,7 @@ public class Course {
         return length / speed;
     }
 
-    //умножить на 1,5
-    public Double calculateMaxTimeA3(Integer length, Double speed) {
-        return length / speed;
-    }
+
 
     //время CACIAg - время самой быстрой собаки в ростовой категории *15%
 

@@ -5,13 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class A3 {
-    private Integer length;
-    private Double dogTime;
-    private Double speed;
-    private Integer refusal; //если три отказа - disq
-    private Integer mistake;
-    private String disq;
+
+public class A3 extends Course {
+
+@Override
+//умножить на 1,5
+public Double calculateMaxTime(Integer length, Double speed) {
+    return length / speed;
+}
 }
