@@ -13,7 +13,7 @@ public class Competition {
     private A3 courseA3;
 
     public void startCompetition(){
-    course.calculateStandardTime(200,3.6);
+    course.calculateIsDogDisqualifiedForExceedingMaxTime(200,3.6);
     }
 
     public void startA3(){
