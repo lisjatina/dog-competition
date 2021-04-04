@@ -10,13 +10,12 @@ import lombok.NoArgsConstructor;
 public class Competition {
 
     private Course course;
-    private A3 courseA3;
+    private Course_A3 courseA3;
 
     public void startCompetition(){
-    course.calculateIsDogDisqualifiedForExceedingMaxTime(200,3.6);
+    course.calculateStandardTime(200,3.6);
     }
 
-    public void startA3(){
-
+    public void startA3(){courseA3.calculateStandardTime(200, 3.6);
     }
 }

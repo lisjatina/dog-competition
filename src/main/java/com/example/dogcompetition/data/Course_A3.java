@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 
-public class A3 extends Course {
+public class Course_A3 extends Course {
 
     @Override
 // ok - умножить на 1,5
