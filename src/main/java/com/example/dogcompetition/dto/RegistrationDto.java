@@ -12,15 +12,19 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegistrationDto {
+    private Integer handlerId;
     private String hName;
     private String hSurname;
+    private String email;
+
+    private Integer dogId;
     private String dogFullName;
     private String dogPetName;
     private String dogBreed;
     private LocalDate dogDateOfBirth;
     private String microchip;
     private String size;
-    private String email;
+
 
     //возможно для начала поменять на стринг
     private Level level;

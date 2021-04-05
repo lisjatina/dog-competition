@@ -13,9 +13,10 @@ public class Competition {
     private Course_A3 courseA3;
 
     public void startCompetition(){
-    course.calculateStandardTime(200,3.6);
+    var standardTime = course.calculateStandardTime();
+    var maxTime = course.calculateMaxTime();
     }
 
-    public void startA3(){courseA3.calculateStandardTime(200, 3.6);
+    public void startA3(){courseA3.calculateStandardTime();
     }
 }

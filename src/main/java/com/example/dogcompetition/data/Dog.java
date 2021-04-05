@@ -17,8 +17,9 @@ public class Dog {
     private LocalDate dateOfBirth;
     private String microchip;
     private String size;
+    private Double time;
     //возможно для начала поменять на стринг
-    private Level level;
+    private String level;
 
 
 }

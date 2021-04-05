@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class Course_A3 extends Course {
+    //private List <Participant> participants = new ArrayList<>();
 
     @Override
 // ok - умножить на 1,5
