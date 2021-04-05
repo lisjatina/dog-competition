@@ -1,5 +1,7 @@
-package com.example.dogcompetition.data;
+package com.example.dogcompetition.managers;
 
+import com.example.dogcompetition.data.Course;
+import com.example.dogcompetition.data.Course_A3;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Competition {
+public class CompetitionManager {
 
     private Course course;
     private Course_A3 courseA3;
