@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of participants</title>
+</head>
+<body>
+<h3>Here will be list of participants</h3>
+<div>
+    <ul>
+        <li th:each="participant:${participants}" th:text="${participant.getName() +
+        ' ' + participant.getSurname() + ' ' + participant.getDog().getPetName()}"></li>
+    </ul>
+</div>
+</body>
+</html>

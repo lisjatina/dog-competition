@@ -1,5 +1,6 @@
 package com.example.dogcompetition.managers;
 
+import com.example.dogcompetition.data.Dog;
 import com.example.dogcompetition.data.Participant;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
@@ -14,6 +15,7 @@ public class RegistrationManager {
         try {
             factory = new Configuration().configure()
                     .addAnnotatedClass(Participant.class)
+                    .addAnnotatedClass(Dog.class)
                     .buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);

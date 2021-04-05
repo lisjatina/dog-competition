@@ -24,8 +24,6 @@ public class RegistrationDto {
     private LocalDate dogDateOfBirth;
     private String microchip;
     private String size;
+    private String level;
 
-
-    //возможно для начала поменять на стринг
-    private Level level;
 }

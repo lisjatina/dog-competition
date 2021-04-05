@@ -4,9 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,9 +12,11 @@ public class Course {
     private Integer length;
     private Double speed;
     private Integer refusal; //если три отказа - disq
-    private Integer mistake;
+    //private Integer mistake; - похоже, что не используем эту переменную
     private String disq;
     //private Participant participant;
+
+    // we need method to get list of participants for current course
 
 
    public Double calculateStandardTime() {
