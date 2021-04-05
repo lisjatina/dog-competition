@@ -11,8 +11,8 @@ public class Course_A3 extends Course {
 
     @Override
 // ok - умножить на 1,5
-    public Double calculateMaxTime(Integer length, Double speed) {
-        return ((length / speed) * 1.5);
+    public Double calculateMaxTime() {
+        return ((getLength() / getSpeed()) * 1.5);
     }
 
     //время CACIAg - время самой быстрой собаки в ростовой категории *15% -
