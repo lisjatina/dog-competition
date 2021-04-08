@@ -1,13 +1,12 @@
 package com.example.dogcompetition.dto;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 // класс для отображения результатов на сайте
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class ParticipantDto {
 
     private String name;
@@ -18,8 +17,9 @@ public class ParticipantDto {
     private Double time;
     private Double speed;
     private Integer faults;
+    private Integer refusals;
     private Double timeFaults;
     private Double totalFaults;
-    private String disqualification;
+    private String disq;
 
 }

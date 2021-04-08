@@ -11,6 +11,7 @@
         <li th:each="participant:${participants}" th:text="${participant.getName() +
         ' ' + participant.getSurname() + ' ' + participant.getDog().getPetName()}"></li>
     </ul>
+    <button type="button" class="title"><a href="/">Back</a></button>
 </div>
 </body>
 </html>

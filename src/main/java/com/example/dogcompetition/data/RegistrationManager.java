@@ -1,7 +1,4 @@
-package com.example.dogcompetition.managers;
-
-import com.example.dogcompetition.data.Dog;
-import com.example.dogcompetition.data.Participant;
+package com.example.dogcompetition.data;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,7 +11,7 @@ public class RegistrationManager {
     public RegistrationManager() {
         try {
             factory = new Configuration().configure()
-                    .addAnnotatedClass(Participant.class)
+                    .addAnnotatedClass(Handler.class)
                     .addAnnotatedClass(Dog.class)
                     .buildSessionFactory();
         } catch (Throwable ex) {

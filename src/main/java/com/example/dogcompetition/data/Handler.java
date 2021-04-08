@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table (name = "handler")
-public class Participant {
+public class Handler {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "handler_id")
@@ -21,7 +21,8 @@ public class Participant {
     @Column (name = "handler_surname")
     private String surname;
 
-@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-@JoinColumn(name="handler_id", referencedColumnName = "dog_handler_id", nullable = true)
-    private Dog dog;
+//    // change one to many?
+//@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+//@JoinColumn(name="dog_id", referencedColumnName = "dog_id", nullable = true)
+//    private Dog dog;
 }

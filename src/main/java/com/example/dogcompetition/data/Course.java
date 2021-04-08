@@ -1,89 +1,98 @@
 package com.example.dogcompetition.data;
 
+import com.example.dogcompetition.dto.ParticipantDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor // do we need it? It always made with 2 parameters
 public class Course {
 
     private Integer length;
     private Double speed;
-    private Integer refusal; //если три отказа - disq
-    //private Integer mistake; - похоже, что не используем эту переменную
-    private String disq;
-    //private Participant participant;
 
-    // we need method to get list of participants for current course
-
-
-   public Double calculateStandardTime() {
+    // final version, correct
+    public Double calculateStandardTime() {
         return length / speed;
     }
 
-    // ok - умножить на 2
+    // final version, correct
     public Double calculateMaxTime() {
         return (calculateStandardTime()* 2);
     }
 
-    // ok - метод дисквал за превышение максимального времени
-    public Boolean calculateIsDogDisqualifiedForExceedingMaxTime(Double dogTime) {
-        if (dogTime> calculateMaxTime()) {
-            this.disq = "DISQ";
-            return true;
-        }
-        return false;
-    }
-
-    // ok - может иметь отрицательное значение!
-    // В случае, если значение меньше нуля, то не учитывается в подсчете штрафов
-    // на трассе, иначе общее количество штрафов тоже получим отрицательное.
+    // final version, correct
     public Double calculateTimePenalties(Double dogTime) {
-        if (dogTime > calculateMaxTime()) {
-            return (dogTime - calculateMaxTime());
+        if (dogTime > calculateStandardTime()) {
+            return (dogTime - calculateStandardTime());
         } else {
             return 0d;
         }
     }
 
-     // ok - складываем штраф за время(если больше нуля)
-    public Double calculateAllPenalties(Integer numberOfMistakes, Double dogTime) {
-        Double mistake = 5.0;
+    public Integer calculatePenalties(Integer faults, Integer refusals){
+    int mistake = 5;
+    return (faults+refusals)*mistake;
+    }
+
+    // final version, correct
+    public Boolean disqForExceedingTime(Double dogTime) {
+        if (dogTime> calculateMaxTime()) {
+            return true;
+        }
+        return false;
+    }
+    // final version, correct
+    public Double calculateTotalPenalties(Integer faults, Integer refusals, Double dogTime) {
         if (calculateTimePenalties(dogTime) > 0) {
-            return numberOfMistakes * mistake + calculateTimePenalties(dogTime);
+            return calculatePenalties(faults, refusals) + calculateTimePenalties(dogTime);
         } else {
-            return numberOfMistakes * mistake;
+            return (double)calculatePenalties(faults, refusals);
         }
     }
-
-    // ok - собака снялась за три отказа
-    public void disqualifiedForThreeRefusals(Integer refusal) {
-        if (refusal == 3) {
-           // this.dogTime = null;
-            this.disq = "DISQ";
+    // final version, correct
+    public boolean disqForThreeRefusals(Integer refusal) {
+        if (refusal >= 3) {
+            return true;
         }
+        return false;
     }
 
-    // ok - если собака снялась, убежав куда не надо
-//    public void disqualified() {
-//        if (getDogTime() == 500) {
-//            //this.dogTime = null;
-//            this.disq = "DISQ";
-////        }
-//    }
+    // final version, correct
+    public double calculateDogSpeed(Integer courseLength, Double dogTime){
+        return courseLength/dogTime;
+    }
+
+    // final version, correct
+    public boolean disqualified(String disq) {
+        if (disq.equalsIgnoreCase("disq")) {
+            return true;
+        }
+        return false;
+    }
 
     //либо возвращает отсортированный список участников
-    public void calculateResult(Participant participant){
-       if (calculateIsDogDisqualifiedForExceedingMaxTime(participant.getDog().getTime())){
-           return;
-       }
-        calculateTimePenalties(participant.getDog().getTime());
-    }
-    //передается список участников, на котором вызывается метод calculate results
-    // и возвращает отсортированный список (либо запрос из базы данных)
-    public void sortResults(){
-
+    public void calculateResult(ParticipantDto participantDto){
+        if (disqForExceedingTime(participantDto.getTime()) || disqForThreeRefusals(participantDto.getRefusals())
+                || disqualified(participantDto.getDisq())){
+            participantDto.setTime(500.0);
+            participantDto.setDisq("Disq");
+            participantDto.setFaults(0);
+            participantDto.setRefusals(0);
+            participantDto.setSpeed(0.0);
+            participantDto.setTimeFaults(0.0);
+            participantDto.setTotalFaults(500.0);
+        }
+        else {
+            var dogTime = participantDto.getTime();
+            var refusals = participantDto.getRefusals();
+            var faults = participantDto.getFaults();
+            calculateDogSpeed(length,dogTime);
+            calculatePenalties(faults, refusals);
+            calculateTimePenalties(dogTime);
+            calculateTotalPenalties(faults, refusals, dogTime);
+        }
     }
 }

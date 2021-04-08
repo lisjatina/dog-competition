@@ -31,6 +31,12 @@ public class Dog {
     private String size;
     @Column (name = "dog_level")
     private String level;
-    // тут будет join по графе time из таблицы соревнований
+
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="dog_handler_id", referencedColumnName = "handler_id", nullable = false)
+    private Handler handler;
+
+
+    // время не у собаки в момент регистрации, а у DTO - участника соревнований?
     private Double time;
 }

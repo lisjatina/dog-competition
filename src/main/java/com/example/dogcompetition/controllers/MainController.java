@@ -1,16 +1,15 @@
 package com.example.dogcompetition.controllers;
 
-import com.example.dogcompetition.data.Participant;
+import com.example.dogcompetition.data.Handler;
 import com.example.dogcompetition.dto.RegistrationDto;
-import com.example.dogcompetition.managers.RegistrationManager;
+import com.example.dogcompetition.data.CompetitionManager;
+import com.example.dogcompetition.data.RegistrationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,7 +22,7 @@ public class MainController {
         return "registration";
     }
 
-    // Method for adding participants into database (so fas incorrect)
+    // Method for adding participants into database (so far incorrect)
     @PostMapping ("/")
     public ModelAndView register(@ModelAttribute("addParticipant") RegistrationDto rDto){
         var rm = new RegistrationManager();
@@ -35,7 +34,8 @@ public class MainController {
     // (so fas incorrect)
     @GetMapping("/participants")
     public String getListOfParticipants(Model model){
-        List <Participant> participants = new ArrayList<>();
+        CompetitionManager cm = new CompetitionManager();
+        List <Handler> participants = cm.getParticipants();
         model.addAttribute("participants" , participants);
 
         return "list_of_participants";

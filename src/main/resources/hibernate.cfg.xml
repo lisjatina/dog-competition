@@ -13,7 +13,7 @@
 
         <!-- Assume test is the database name -->
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/library?serverTimezone=UTC
+            jdbc:mysql://localhost:3306/competitors?serverTimezone=UTC
         </property>
 
         <property name="hibernate.connection.username">

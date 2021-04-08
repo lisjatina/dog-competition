@@ -10,9 +10,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container ">
+    <div class="mb-3"></div>
     <!--вставка картинки на страницу-->
-    <img th:src="@{/img/Capture12.jpg}" width="400">
+    <img th:src="@{/img/header.jpg}" width="400">
     <h1>Welcome to agility competition</h1>
     <h4>Please, fill in registration form</h4>
     <form name="addParticipant" id="addParticipant" method="post" action="/register">
@@ -79,8 +80,9 @@
             <label for="email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="email" name="email">
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-
+        <button type="submit" class="btn-my-own">Register</button>
+        <button type="button" class="btn-my-own"><a href="/participants">List of participants</a></button>
+        <div class="mb-3"></div>
     </form>
 </div>
 
