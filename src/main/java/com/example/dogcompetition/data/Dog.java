@@ -37,6 +37,6 @@ public class Dog {
     private Handler handler;
 
 
-    // время не у собаки в момент регистрации, а у DTO - участника соревнований?
-    private Double time;
+//    // время не у собаки в момент регистрации, а у DTO - участника соревнований?
+//    private Double time;
 }

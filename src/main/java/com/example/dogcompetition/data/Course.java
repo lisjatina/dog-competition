@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor // do we need it? It always made with 2 parameters
+//@NoArgsConstructor // do we need it? It always made with 2 parameters
 public class Course {
 
     private Integer length;
@@ -73,7 +73,8 @@ public class Course {
         return false;
     }
 
-    //либо возвращает отсортированный список участников
+    //записывает в базу результаты участников (нужен метод, который
+    // возвращает отсортированный по penalty и времени список участников). View из DB?
     public void calculateResult(ParticipantDto participantDto){
         if (disqForExceedingTime(participantDto.getTime()) || disqForThreeRefusals(participantDto.getRefusals())
                 || disqualified(participantDto.getDisq())){
@@ -90,9 +91,9 @@ public class Course {
             var refusals = participantDto.getRefusals();
             var faults = participantDto.getFaults();
             calculateDogSpeed(length,dogTime);
-            calculatePenalties(faults, refusals);
-            calculateTimePenalties(dogTime);
-            calculateTotalPenalties(faults, refusals, dogTime);
+            var coursePenalties = calculatePenalties(faults, refusals);
+            var timePenalties = calculateTimePenalties(dogTime);
+            var totalPenalties = calculateTotalPenalties(faults, refusals, dogTime);
         }
     }
 }

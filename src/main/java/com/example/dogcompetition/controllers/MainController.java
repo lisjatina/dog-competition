@@ -1,6 +1,7 @@
 package com.example.dogcompetition.controllers;
 
 import com.example.dogcompetition.data.Handler;
+import com.example.dogcompetition.dto.ParticipantDto;
 import com.example.dogcompetition.dto.RegistrationDto;
 import com.example.dogcompetition.data.CompetitionManager;
 import com.example.dogcompetition.data.RegistrationManager;
@@ -35,7 +36,7 @@ public class MainController {
     @GetMapping("/participants")
     public String getListOfParticipants(Model model){
         CompetitionManager cm = new CompetitionManager();
-        List <Handler> participants = cm.getParticipants();
+        List <ParticipantDto> participants = cm.getParticipants();
         model.addAttribute("participants" , participants);
 
         return "list_of_participants";

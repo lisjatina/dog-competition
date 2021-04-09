@@ -1,4 +1,5 @@
 package com.example.dogcompetition.data;
+import com.example.dogcompetition.dto.RegistrationDto;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -20,7 +21,7 @@ public class RegistrationManager {
         }
     }
 
-    // метод для записи в базу данных
+    // метод для записи в базу данных и mapping DTO (Dog, Handler и автоматическая запись в таблицу с будущими результатами) на две (три?) разные таблицы
     public void save(Object item){
 
         // создаем сессию - подключение к базе данных
@@ -46,7 +47,31 @@ public class RegistrationManager {
             }
             System.err.println(exception);
         } finally {
-            //обязательно закрываем сессию
+            session.close();
+        }
+    }
+
+    // одним методом сохраняю сразу с хендлера и собаку. Можно ли так?
+    public void saveParticipant(RegistrationDto dto){
+        var session = factory.openSession();
+        Transaction tx = null;
+        var handler = new Handler(dto.getHandlerId(), dto.getHName(), dto.getHSurname());
+        var dog = new Dog(dto.getDogId(), dto.getDogFullName(), dto.getDogPetName(),
+                dto.getDogBreed(), dto.getDogDateOfBirth(), dto.getMicrochip(),
+                dto.getSize(), dto.getLevel(), handler);
+        try {
+            tx = session.beginTransaction();
+
+            session.save(handler);
+            session.save(dog);
+            tx.commit();
+
+        } catch (HibernateException exception) {
+            if(tx !=null){
+            tx.rollback();
+            }
+            System.err.println(exception);
+        } finally {
             session.close();
         }
     }
