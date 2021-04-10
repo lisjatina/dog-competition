@@ -13,7 +13,7 @@
 <div>
     <ul>
         <li th:each="participant:${participants}" th:text="${participant.getName() +
-        ' ' + participant.getSurname() + ' ' + participant.getDog().getPetName()}"></li>
+        ' ' + participant.getSurname() + ' ' + participant.getDogPetName()}"></li>
     </ul>
     <button type="button" class="btn-my-own"><a href="/">Back</a></button>
 </div>

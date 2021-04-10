@@ -1,19 +1,25 @@
 package com.example.dogcompetition.data;
+import com.example.dogcompetition.dto.ParticipantDto;
 import com.example.dogcompetition.dto.RegistrationDto;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class RegistrationManager {
+import java.util.ArrayList;
+import java.util.List;
+
+public class DatabaseManager {
 
     private static SessionFactory factory;
+    private Course course;
 
-    public RegistrationManager() {
+    public DatabaseManager() {
         try {
             factory = new Configuration().configure()
                     .addAnnotatedClass(Handler.class)
                     .addAnnotatedClass(Dog.class)
+                    .addAnnotatedClass(Breed.class)
                     .buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
@@ -22,7 +28,7 @@ public class RegistrationManager {
     }
 
     // метод для записи в базу данных и mapping DTO (Dog, Handler и автоматическая запись в таблицу с будущими результатами) на две (три?) разные таблицы
-    public void save(Object item){
+    public void save(List <Object> items){
 
         // создаем сессию - подключение к базе данных
         var session = factory.openSession();
@@ -34,7 +40,10 @@ public class RegistrationManager {
             // запускаем сессию
             tx = session.beginTransaction();
             // сохраняем объект
-            session.save(item);
+            for ( var item: items
+                 ) {
+             session.save(item);
+            }
             // если сохранился успешно, отправляем изменения в базу данных.
             // В рамках одной транзакции можно вносить сколько угодно изменений
             tx.commit();
@@ -51,28 +60,40 @@ public class RegistrationManager {
         }
     }
 
-    // одним методом сохраняю сразу с хендлера и собаку. Можно ли так?
-    public void saveParticipant(RegistrationDto dto){
-        var session = factory.openSession();
-        Transaction tx = null;
-        var handler = new Handler(dto.getHandlerId(), dto.getHName(), dto.getHSurname());
-        var dog = new Dog(dto.getDogId(), dto.getDogFullName(), dto.getDogPetName(),
-                dto.getDogBreed(), dto.getDogDateOfBirth(), dto.getMicrochip(),
-                dto.getSize(), dto.getLevel(), handler);
-        try {
-            tx = session.beginTransaction();
+    public List<Breed> getBreeds(){
+       var session = factory.openSession();
 
-            session.save(handler);
-            session.save(dog);
-            tx.commit();
-
-        } catch (HibernateException exception) {
-            if(tx !=null){
-            tx.rollback();
+            try {
+                return session.createQuery("FROM Breed").list();
+            } catch (HibernateException exception) {
+                System.err.println(exception);
+            } finally {
+                session.close();
             }
+            return new ArrayList<>();
+        }
+
+    public List<Dog> getDogs(){
+        var session = factory.openSession();
+
+        try {
+            return session.createQuery("FROM Dog").list();
+        } catch (HibernateException exception) {
             System.err.println(exception);
         } finally {
             session.close();
         }
+        return new ArrayList<>();
     }
+
+// TODO: 4/10/2021
+//    public void startCompetition(ParticipantDto participantDto, Integer length, Double speed){
+//        List <ParticipantDto> currentParticipants = getParticipants();
+//        course = new Course(length, speed);
+//        var standardTime = course.calculateStandardTime(); // надо записать значение в базу и отобразить в html
+//        var maxTime = course.calculateMaxTime(); // надо записать значение в базу и отобразить в html
+//        course.calculateResult(participantDto); // надо записать значение в базу и отобразить в html
+//    }
+
+
 }

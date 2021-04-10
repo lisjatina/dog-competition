@@ -21,8 +21,6 @@ public class Dog {
     private String pedigreeName;
     @Column (name = "dog_pet_name")
     private String petName;
-    @Column (name = "dog_breed")
-    private String breed;
     @Column (name = "dog_date_of_birth")
     private LocalDate dateOfBirth;
     @Column (name = "dog_microchip")
@@ -32,7 +30,11 @@ public class Dog {
     @Column (name = "dog_level")
     private String level;
 
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn (name = "dog_breed_id", referencedColumnName = "breed_id", nullable = false)
+    private Breed breed;
+
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn(name="dog_handler_id", referencedColumnName = "handler_id", nullable = false)
     private Handler handler;
 

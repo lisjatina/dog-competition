@@ -23,7 +23,6 @@
         </div>
 
         <div class="mb-3">
-
             <label for="hSurname" class="form-label">Handler surname:</label>
             <input required type="text" name="hSurname" id="hSurname" maxlength="100">
         </div>
@@ -42,8 +41,7 @@
             <!--        Элемент select позволяет выбрать один из элементов из списка-->
             <label for="dogBreed">Dog breed</label>
             <select name="dogBreed" id="dogBreed">
-                <option value="">Mix breed</option>
-                <!--            <option th:each="dog: ${dogs}" th:value="${dog.getId()}" th:text="${dog.getBreed()}"></option>-->
+               <option th:each="breed: ${breeds}" th:value="${breed.getId()}" th:text="${breed.getBreed()}"></option>
             </select>
         </div>
 
