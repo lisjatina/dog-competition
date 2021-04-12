@@ -1,5 +1,6 @@
 package com.example.dogcompetition.controllers;
 
+import com.example.dogcompetition.data.Course;
 import com.example.dogcompetition.dto.ParticipantDto;
 import com.example.dogcompetition.dto.RegistrationDto;
 import com.example.dogcompetition.data.DatabaseManager;
@@ -46,9 +47,10 @@ public class MainController {
     }
 
     @GetMapping("/results")
-    public String getResults(Model model){
+    public String getResults(Model model, Integer length, Double speed){
+        Course course = new Course(length, speed);
         var rm = new ResultManager();
-        var results = rm.getResults();
+        var results = rm.getResults(course.getLength(), course.getSpeed());
         model.addAttribute("results", results);
         return "results";
     }

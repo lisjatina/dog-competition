@@ -17,5 +17,5 @@ public class Breed {
     @Column (name = "breed_id")
     private Integer id;
     @Column (name = "breed_name")
-    private String breed;
+    private String breedName;
 }

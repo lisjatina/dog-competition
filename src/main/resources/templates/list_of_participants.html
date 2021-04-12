@@ -9,12 +9,32 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<h3>Here will be list of participants</h3>
+<h3>List of registered participants</h3>
 <div>
-    <ul>
-        <li th:each="participant:${participants}" th:text="${participant.getName() +
-        ' ' + participant.getSurname() + ' ' + participant.getDogPetName()}"></li>
-    </ul>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Handler</th>
+            <th scope="col">Dog</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="participant: ${participants} ">
+            <th scope="row" th:text="${participantStat.index+1}"></th>
+            <td th:text="${participant.getName() + ' ' + participant.getSurname()}"></td>
+            <td th:text="${participant.getDogFullName() + ', ' + participant.getDogPetName() + ', '
+            + participant.getDogBreed()}"></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+<!--    <ul>-->
+<!--        <li th:each="participant:${participants}" th:text="${participant.getName() +-->
+<!--        ' ' + participant.getSurname() + ' ' + participant.getDogPetName()}"></li>-->
+<!--    </ul>-->
     <button type="button" class="btn-my-own"><a href="/">Back</a></button>
 </div>
 </body>

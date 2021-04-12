@@ -41,7 +41,11 @@
             <!--        Элемент select позволяет выбрать один из элементов из списка-->
             <label for="dogBreed">Dog breed</label>
             <select name="dogBreed" id="dogBreed">
-               <option th:each="breed: ${breeds}" th:value="${breed.getId()}" th:text="${breed.getBreed()}"></option>
+                <option value="border-collie">Border-collie</option>
+                <option value="mixbreed">Mixbreed</option>
+                <option value="shetland sheepdog">Shetland sheepdog</option>
+                <option value="whippet">Whippet</option>
+
             </select>
         </div>
 
