@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "results")
 public class Result {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "result_id")
@@ -24,7 +25,8 @@ public class Result {
     @Column (name = "refusals")
     private Integer refusals;
     @Column (name = "disq")
-    private String disq;    @Column (name = "speed")
+    private String disq;
+    @Column (name = "speed")
     private Double speed;
     @Column (name = "mistakes")
     private Integer mistakes;
@@ -36,4 +38,24 @@ public class Result {
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn(name="dog_result_id", referencedColumnName = "dog_id", nullable = false)
     private Dog dog;
+
+    public Double calculateSpeed(Course course){
+    this.speed = course.calculateDogSpeed(course.getLength(), course.getSpeed());
+    return speed;
+    }
+
+    public Integer calcMistakes(Course course){
+        this.mistakes = course.calculatePenalties(getFaults(),getRefusals());
+        return mistakes;
+    }
+
+    public Double calcTimeFaults(Course course){
+        this.timeFaults= course.calculateTimePenalties(getTime());
+        return timeFaults;
+    }
+
+    public Double calcTotalFaults(Course course){
+        this.totalFaults = course.calculateTotalPenalties(getFaults(), getRefusals(), getTime());
+        return totalFaults;
+    }
 }

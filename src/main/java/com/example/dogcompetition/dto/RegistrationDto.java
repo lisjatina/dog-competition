@@ -21,8 +21,6 @@ public class RegistrationDto {
     private Integer dogId;
     private String dogFullName;
     private String dogPetName;
-//    private Breed breed;
-//    private List <Breed> breeds = new ArrayList<>();
     private String dogBreed;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

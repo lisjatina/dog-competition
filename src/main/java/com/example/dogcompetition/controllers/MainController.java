@@ -9,7 +9,6 @@ import com.example.dogcompetition.services.ResultManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
@@ -18,12 +17,16 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    @GetMapping ("/")
-    public String getRegistrationPage(Model model){
-        DatabaseManager dm = new DatabaseManager();
+    @GetMapping("/home")
+    public String getHomePage(){
+        return "home";
+    }
 
-        model.addAttribute("breeds", dm.getBreeds());
-
+    @GetMapping ("/register")
+    public String getRegistrationPage(){
+//        DatabaseManager dm = new DatabaseManager();
+//
+//        model.addAttribute("breeds", dm.getBreeds());
         return "registration";
     }
 
@@ -36,7 +39,6 @@ public class MainController {
     }
 
     // Method for printing registered participants (Just name, surname and dog's pet name)
-    // (so fas incorrect)
     @GetMapping("/participants")
     public String getListOfParticipants(Model model){
         var rm = new ResultManager();
@@ -45,13 +47,21 @@ public class MainController {
 
         return "list_of_participants";
     }
-
+// showing list of entered results (so far incorrect)
     @GetMapping("/results")
     public String getResults(Model model, Integer length, Double speed){
         Course course = new Course(length, speed);
+        model.addAttribute("course", course);
         var rm = new ResultManager();
-        var results = rm.getResults(course.getLength(), course.getSpeed());
+        var results = rm.getResults(course);
         model.addAttribute("results", results);
         return "results";
+    }
+
+    //so far incorrect
+    @PostMapping("/results/{id}")
+    public String addResults(Model model){
+
+        return "add_results";
     }
 }
