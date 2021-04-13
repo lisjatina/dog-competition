@@ -2,6 +2,7 @@ package com.example.dogcompetition.controllers;
 
 import com.example.dogcompetition.data.DatabaseManager;
 import com.example.dogcompetition.dto.LoginDto;
+import com.example.dogcompetition.services.SessionData;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,9 @@ public class UserController {
 
     private DatabaseManager repo;
 
-//    public UserController() {
-//        repo = new DatabaseManager();
-//    }
+    public UserController() {
+        repo = new DatabaseManager();
+    }
 
     @GetMapping("/login")
     public String getIndex(Model model) {
@@ -32,16 +33,17 @@ public class UserController {
     public String login(LoginDto userData, Model model, HttpServletRequest request) {
 
         var user = repo.login(userData.getEmail(), userData.getPwd());
+
         if (user == null) {
             model.addAttribute("error", "Unable to login");
             model.addAttribute("hasError", true);
             return "login";
         }
-//
-//        request.getSession().setAttribute(SessionData.User, user);
-//
-//        model.addAttribute("user", user);
-//
-        return "login";
+
+        request.getSession().setAttribute(SessionData.User, user);
+
+        model.addAttribute("user", user);
+
+        return "add_results";
         }
     }
