@@ -3,8 +3,6 @@ package com.example.dogcompetition.services;
 import com.example.dogcompetition.data.*;
 import com.example.dogcompetition.dto.ParticipantDto;
 import com.example.dogcompetition.dto.RegistrationDto;
-import org.hibernate.HibernateException;
-import org.hibernate.Transaction;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +20,10 @@ public class ResultManager {
                         dog.getPedigreeName(),
                         dog.getBreed()))
                 .collect(Collectors.toList());
+    }
+
+    public Course createCourse (Integer length, Double speed){
+        return new Course(length,speed);
     }
 
     public void saveResults(ParticipantDto dto, Integer id) {

@@ -4,6 +4,7 @@ import com.example.dogcompetition.data.Breed;
 import com.example.dogcompetition.data.DatabaseManager;
 import com.example.dogcompetition.data.Dog;
 import com.example.dogcompetition.data.Handler;
+import com.example.dogcompetition.data.Result;
 import com.example.dogcompetition.dto.RegistrationDto;
 
 
@@ -19,6 +20,17 @@ public class RegistrationManager {
                 dto.getSize(), dto.getLevel(), dto.getDogBreed(), handler);
         var dm = new DatabaseManager();
         dm.save(List.of(handler, dog));
+    }
+
+    public void saveParticipant2(RegistrationDto dto) {
+
+        var handler = new Handler(dto.getHandlerId(), dto.getHName(), dto.getHSurname());
+        var dog = new Dog(dto.getDogId(), dto.getDogFullName(), dto.getDogPetName(),
+                dto.getDogDateOfBirth(), dto.getMicrochip(),
+                dto.getSize(), dto.getLevel(), dto.getDogBreed(), handler);
+        var result = new Result(0, null,null,null, null, null,null,null,null, dog);
+        var dm = new DatabaseManager();
+        dm.save(List.of(handler, dog, result));
     }
 }
 

@@ -19,6 +19,48 @@
         <a class="link" href="/login">Login</a>
     </div>
 </nav>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Place</th>
+            <th scope="col">Dog</th>
+            <th scope="col">Handler</th>
+            <th scope="col">Time(s)</th>
+            <th scope="col">Speed(m/s)</th>
+            <th scope="col">Mistakes</th>
+            <th scope="col">Time faults</th>
+            <th scope="col">Total faults</th>
+            <th scope="col">Disq</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="result: ${results} ">
+            <th scope="row" th:text="${resultStat.index+1}"></th>
+            <td th:text="${result.getDog().getPetName()+ ', ' + result.getDog().getPedigreeName()
+        + ', ' + result.getDog().getBreed()}"></td>
+            <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
+            <td th:text="${result.getTime()}"></td>
+            <td th:text="${result.getSpeed()}"></td>
+            <td th:text="${result.getMistakes()}"></td>
+            <td th:text="${result.getTimeFaults()}"></td>
+            <td th:text="${result.getTotalFaults()}"></td>
+            <td th:text="${result.getDisq()}"></td>
+        </tr>
+        </tbody>
+    </table>
+<!-- example fow to make dynamic href to the rows in table    <tbody>-->
+<!--    <tr th:each="adv: ${advertisments}">-->
+<!--        <th scope="row" th:text="${adv.getId()}"></th>-->
+<!--        <td >-->
+<!--            <a th:href="${'/details/'+ adv.getId()}" th:text="${adv.getTitle()}"></a>-->
+<!--        </td>-->
+<!--        <td th:text="${adv.getUser().getName()}"></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+
+</div>
 
 </body>
 </html>

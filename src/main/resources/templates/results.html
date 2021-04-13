@@ -13,7 +13,7 @@
 <nav class="navigation">
     <div class="links">
         <a class="link" href="/home">Home</a>
-        <a class="link" href="/results">Registration</a>
+        <a class="link" href="/register">Registration</a>
         <a class="link" href="/participants">Participants</a>
         <a class="link" href="/results">Results</a>
         <a class="link" href="/login">Login</a>
@@ -22,6 +22,7 @@
 
 <div class="container">
     <div class="mb-3"></div>
+    <span>Course length is</span>
 
 <!--    label form, type post -назначить значения трассы (pop-up window?)-->
 
@@ -52,19 +53,19 @@
 
     <tr th:each="result: ${results} ">
         <th scope="row" th:text="${resultStat.index+1}"></th>
-        <td th:text="${result.getDogPetName()+ ', ' + result.getDogFullName() + ', ' + result.getDogBreed()}"></td>
-        <td th:text="${result.getName() +' ' + result.getSurname()}"></td>
+        <td th:text="${result.getDog().getPetName()+ ', ' + result.getDog().getPedigreeName()
+        + ', ' + result.getDog().getBreed()}"></td>
+        <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
         <td th:text="${result.getTime()}"></td>
         <td th:text="${result.getSpeed()}"></td>
         <td th:text="${result.getMistakes()}"></td>
         <td th:text="${result.getTimeFaults()}"></td>
         <td th:text="${result.getTotalFaults()}"></td>
         <td th:text="${result.getDisq()}"></td>
+   </tr>
+    </tbody>
+    </table>
 
 <!--        <td th:text="${#numbers.formatDecimal(prod.price, 1, 2)}">0.99</td>-->
-   </tr>
-
-    </tbody>
-</table>
 </body>
 </html>

@@ -90,11 +90,24 @@ public class DatabaseManager {
         return null;
     }
 
+    public Result getResultById(int id) {
+        var session = factory.openSession();
+
+        try {
+            return session.get(Result.class, id);
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
     public List<Result> getResults() {
         var session = factory.openSession();
 
         try {
-            return session.createQuery("FROM Result ").list();
+            return session.createQuery("FROM Result").list();
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {
