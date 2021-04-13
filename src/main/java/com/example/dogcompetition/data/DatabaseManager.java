@@ -133,12 +133,12 @@ public class DatabaseManager {
 
         try {
             String hql = "FROM User U WHERE U.email = :email and U.password = MD5(:pwd)";
-            Query query = session.createQuery(hql);
+            Query query1 = session.createQuery(hql);
 
-            query.setParameter("email", email);
-            query.setParameter("pwd", password);
+            query1.setParameter("email", email);
+            query1.setParameter("pwd", password);
 
-            var results = query.list();
+            var results = query1.list();
 
             if (results.size() > 0) {
                 return (User) results.get(0);
