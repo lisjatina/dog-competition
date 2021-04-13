@@ -1,22 +1,16 @@
 package com.example.dogcompetition.controllers;
 
 import com.example.dogcompetition.data.Course;
-import com.example.dogcompetition.data.UserRepository;
-import com.example.dogcompetition.dto.LoginDto;
 import com.example.dogcompetition.dto.ParticipantDto;
 import com.example.dogcompetition.dto.RegistrationDto;
-import com.example.dogcompetition.data.DatabaseManager;
 import com.example.dogcompetition.services.RegistrationManager;
 import com.example.dogcompetition.services.ResultManager;
-import com.example.dogcompetition.services.SessionData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
 import java.util.List;
 
 
