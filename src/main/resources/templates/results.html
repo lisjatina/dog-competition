@@ -9,22 +9,57 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<table class="table">
+
+<nav class="navigation">
+    <div class="links">
+        <a class="link" href="/home">Home</a>
+        <a class="link" href="/results">Registration</a>
+        <a class="link" href="/participants">Participants</a>
+        <a class="link" href="/results">Results</a>
+        <a class="link" href="/login">Login</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="mb-3"></div>
+
+<!--    label form, type post -назначить значения трассы (pop-up window?)-->
+
+    <div class="mb-3">
+        <label for="length" class="form-label">Course length</label>
+        <input required type="number" name="length" id="length" maxlength="100">
+
+        <label for="speed" class="form-label">Course speed</label>
+        <input required type="number" name="speed" id="speed" maxlength="100">
+    </div>
+<!--    <p th:text="${course.setLength()}"></p>-->
+</div>
+<table class="table table-striped">
     <thead>
     <tr>
         <th scope="col">Place</th>
         <th scope="col">Dog</th>
         <th scope="col">Handler</th>
-        <th scope="col">Time</th>
+        <th scope="col">Time(s)</th>
+        <th scope="col">Speed(m/s)</th>
+        <th scope="col">Mistakes</th>
+        <th scope="col">Time faults</th>
+        <th scope="col">Total faults</th>
+        <th scope="col">Disq</th>
     </tr>
     </thead>
     <tbody>
 
     <tr th:each="result: ${results} ">
         <th scope="row" th:text="${resultStat.index+1}"></th>
-        <td th:text="${result.getDogPetName()}"></td>
-        <td th:text="${result.getName()}"></td>
+        <td th:text="${result.getDogPetName()+ ', ' + result.getDogFullName() + ', ' + result.getDogBreed()}"></td>
+        <td th:text="${result.getName() +' ' + result.getSurname()}"></td>
         <td th:text="${result.getTime()}"></td>
+        <td th:text="${result.getSpeed()}"></td>
+        <td th:text="${result.getMistakes()}"></td>
+        <td th:text="${result.getTimeFaults()}"></td>
+        <td th:text="${result.getTotalFaults()}"></td>
+        <td th:text="${result.getDisq()}"></td>
 
 <!--        <td th:text="${#numbers.formatDecimal(prod.price, 1, 2)}">0.99</td>-->
    </tr>

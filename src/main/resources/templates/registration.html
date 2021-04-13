@@ -10,6 +10,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<nav class="navigation">
+    <div class="links">
+        <a class="link" href="/home">Home</a>
+        <a class="link" href="/results">Registration</a>
+        <a class="link" href="/participants">Participants</a>
+        <a class="link" href="/results">Results</a>
+        <a class="link" href="/login">Login</a>
+    </div>
+</nav>
+
 <div class="container ">
     <div class="mb-3"></div>
     <!--вставка картинки на страницу-->
@@ -41,7 +51,12 @@
             <!--        Элемент select позволяет выбрать один из элементов из списка-->
             <label for="dogBreed">Dog breed</label>
             <select name="dogBreed" id="dogBreed">
-               <option th:each="breed: ${breeds}" th:value="${breed.getId()}" th:text="${breed.getBreed()}"></option>
+                <option value="border-collie">Border-collie</option>
+                <option value="mixbreed">Mixbreed</option>
+                <option value="papillon">Papillon</option>
+                <option value="shetland sheepdog">Shetland sheepdog</option>
+                <option value="whippet">Whippet</option>
+
             </select>
         </div>
 
@@ -78,11 +93,13 @@
             <label for="email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="email" name="email">
         </div>
-        <button type="submit" class="btn-my-own">Register</button>
-        <button type="button" class="btn-my-own"><a href="/participants">List of participants</a></button>
+
+        <div class="d-grid gap-2 d-md-block">
+            <button type="submit" class="btn btn-primary">Register</button>
+             <a class="btn btn-primary" href="/participants" role="button">List of participants</a>
+        </div>
         <div class="mb-3"></div>
     </form>
 </div>
-
 </body>
 </html>

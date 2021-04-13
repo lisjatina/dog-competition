@@ -9,12 +9,13 @@
 </head>
 <body>
 <div class="container">
+
     <div class="row align-items-center">
         <div class="col">
 
         </div>
         <div class="col">
-            <form name="userData" id="userData" method="post" action="/">
+            <form name="userData" id="userData" method="post" action="/login">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" name="email">
@@ -23,10 +24,9 @@
                     <label for="pwd" class="form-label">Password</label>
                     <input type="password" class="form-control" id="pwd" name="pwd">
                 </div>
-                <input type="datetime-local" name="time">
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
-            <div th:if="${hasError}" class="alert alert-danger container-with-top-margin" role="alert" th:text="${error}">
+            <div style="margin-top: 10px" th:if="${hasError}" class="alert alert-danger" role="alert" th:text="${error}">
 
             </div>
         </div>

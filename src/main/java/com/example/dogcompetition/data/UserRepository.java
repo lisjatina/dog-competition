@@ -2,10 +2,23 @@ package com.example.dogcompetition.data;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 public class UserRepository {
     private static SessionFactory factory;
+
+    public UserRepository() {
+        try {
+            factory = new Configuration()
+                    .configure()
+                    .addAnnotatedClass(User.class)
+                    .buildSessionFactory();
+        } catch (Throwable ex) {
+            System.err.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
 
     public User login(String email, String password) {
         var session = factory.openSession();

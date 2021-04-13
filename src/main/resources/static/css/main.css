@@ -9,11 +9,19 @@
 
 .btn-my-own {
     color: black;
-    background-color: chartreuse !important;
+    background-color: cadetblue !important;
     border-color: blue;
 }
 
 .mt-0 {
     margin-top: 40px !important;
     margin-bottom: 40px !important;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: 'playfair_displayregular', serif;
 }

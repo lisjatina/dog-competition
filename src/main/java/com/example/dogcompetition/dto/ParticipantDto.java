@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class ParticipantDto {
 
     private Integer dogId;
+    private Integer runId;
     private String name;
     private String surname;
     private String dogPetName;
