@@ -16,9 +16,9 @@ public class UserController {
 
     private UserRepository repo;
 
-    public UserController() {
-        repo = new UserRepository();
-    }
+//    public UserController() {
+//        repo = new UserRepository();
+//    }
 
     @GetMapping("/login")
     public String getIndex(Model model) {
