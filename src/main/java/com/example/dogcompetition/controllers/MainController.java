@@ -1,5 +1,8 @@
 package com.example.dogcompetition.controllers;
 
+import com.example.dogcompetition.SessionData;
+import com.example.dogcompetition.data.UserRepository;
+import com.example.dogcompetition.dto.LoginDto;
 import com.example.dogcompetition.dto.ParticipantDto;
 import com.example.dogcompetition.dto.RegistrationDto;
 import com.example.dogcompetition.data.DatabaseManager;
@@ -11,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -51,5 +57,34 @@ public class MainController {
         var results = rm.getResults();
         model.addAttribute("results", results);
         return "results";
+    }
+
+    @GetMapping("/login")
+    public String getIndex(Model model) {
+        model.addAttribute("error","");
+        model.addAttribute("hasError", false);
+        return "login";
+    }
+    //HttpSession session
+    @PostMapping("/login")
+    public String login(LoginDto userData, Model model, HttpServletRequest request) {
+
+        var repo = new UserRepository();
+
+        var time = LocalDateTime.parse(userData.getTime());
+
+        var user = repo.login(userData.getEmail(), userData.getPwd());
+
+        if(user == null) {
+            model.addAttribute("error", "Unable to login");
+            model.addAttribute("hasError", true);
+            return "login";
+        }
+
+        request.getSession().setAttribute(SessionData.User, user);
+
+        model.addAttribute("user", user);
+
+        return "add_results";
     }
 }
