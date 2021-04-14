@@ -19,9 +19,9 @@ public class DatabaseManager {
             factory = new Configuration().configure()
                     .addAnnotatedClass(Handler.class)
                     .addAnnotatedClass(Dog.class)
-                    .addAnnotatedClass(Breed.class)
                     .addAnnotatedClass(Result.class)
                     .addAnnotatedClass(User.class)
+                    .addAnnotatedClass(Course.class)
                     .buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
@@ -51,20 +51,7 @@ public class DatabaseManager {
         }
     }
 
-    public List<Breed> getBreeds(){
-       var session = factory.openSession();
-
-            try {
-                return session.createQuery("FROM Breed").list();
-            } catch (HibernateException exception) {
-                System.err.println(exception);
-            } finally {
-                session.close();
-            }
-            return new ArrayList<>();
-        }
-
-    public List<Dog> getDogs(){
+   public List<Dog> getDogs(){
         var session = factory.openSession();
 
         try {
@@ -101,6 +88,19 @@ public class DatabaseManager {
             session.close();
         }
         return null;
+    }
+
+    public List<Course> getCourse() {
+        var session = factory.openSession();
+
+        try {
+            return session.createQuery("FROM Course").list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
     }
 
     public List<Result> getResults() {
@@ -164,6 +164,7 @@ public class DatabaseManager {
 
         return null;
     }
+
 
     // just an example how to map
 //    public List<Plant> getYourPlants(int id){

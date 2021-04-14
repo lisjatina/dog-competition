@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-//@NoArgsConstructor // do we need it? It always made with 2 parameters
+@NoArgsConstructor
 public class Course {
 
     private Integer length;

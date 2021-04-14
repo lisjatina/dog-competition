@@ -22,10 +22,6 @@ public class ResultManager {
                 .collect(Collectors.toList());
     }
 
-    public Course createCourse (Integer length, Double speed){
-        return new Course(length,speed);
-    }
-
     public void saveResults(ParticipantDto dto, Integer id) {
             var dm = new DatabaseManager();
      var dog = dm.getById(id);

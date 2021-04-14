@@ -1,7 +1,5 @@
 package com.example.dogcompetition.dto;
 
-
-import com.example.dogcompetition.data.Breed;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

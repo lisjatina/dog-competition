@@ -9,7 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-
 <nav class="navigation">
     <div class="links">
         <a class="link" href="/home">Home</a>
@@ -19,6 +18,16 @@
         <a class="link" href="/login">Login</a>
     </div>
 </nav>
+<form name="addCourse" id="addCourse" method="post" action="/results">
+<div class="mb-3">
+    <label for="length" class="form-label">Course length</label>
+    <input required type="number" min="0" value="0" name="length" id="length"  maxlength="100">
+
+    <label for="courseSpeed" class="form-label">Course speed</label>
+    <input required type="number" step="0.01" min="0" value="0" name="courseSpeed" id="courseSpeed"  maxlength="100">
+</div>
+    <button type="submit" class="btn btn-primary">Create course</button>
+</form>
 <div class="container">
     <table class="table table-striped">
         <thead>
@@ -41,7 +50,7 @@
             <td th:text="${result.getDog().getPetName()+ ', ' + result.getDog().getPedigreeName()
         + ', ' + result.getDog().getBreed()}"></td>
             <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
-            <td th:text="${result.getTime()}"></td>
+            <td th:href="${'/home'}" th:text="${result.getTime()}"></td>
             <td th:text="${result.getSpeed()}"></td>
             <td th:text="${result.getMistakes()}"></td>
             <td th:text="${result.getTimeFaults()}"></td>
