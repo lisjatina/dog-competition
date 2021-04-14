@@ -33,18 +33,9 @@ public class Dog {
     @Column (name = "dog_breed")
     private String breed;
 
-//    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-//    @JoinColumn (name = "dog_result_id", referencedColumnName = "result_id", nullable = false)
-//    private Result result;
-
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn(name="dog_handler_id", referencedColumnName = "handler_id", nullable = false)
     private Handler handler;
-
-// TODO: 4/12/2021 this should be improved - need to read breeds from DB
-//    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-//    @JoinColumn (name = "dog_breed_id", referencedColumnName = "breed_id", nullable = false)
-//    private Breed breed;
 
 
 }

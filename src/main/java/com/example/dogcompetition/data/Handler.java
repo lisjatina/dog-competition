@@ -20,9 +20,4 @@ public class Handler {
     private String name;
     @Column (name = "handler_surname")
     private String surname;
-
-//    // change one to many?
-//@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-//@JoinColumn(name="dog_id", referencedColumnName = "dog_id", nullable = true)
-//    private Dog dog;
 }

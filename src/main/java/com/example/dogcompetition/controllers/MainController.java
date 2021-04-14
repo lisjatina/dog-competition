@@ -22,8 +22,6 @@ public class MainController {
 
     @GetMapping ("/register")
     public String getRegistrationPage(){
-//        DatabaseManager dm = new DatabaseManager();
-//        model.addAttribute("breeds", dm.getBreeds());
         return "registration";
     }
 
@@ -40,9 +38,7 @@ public class MainController {
     public String getListOfParticipants(Model model){
         var dm = new DatabaseManager();
         model.addAttribute("participants", dm.getDogs());
-
         return "list_of_participants";
     }
-
 
 }

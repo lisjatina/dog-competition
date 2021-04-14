@@ -47,12 +47,13 @@ public class Result {
     @JoinColumn(name="dog_result_id", referencedColumnName = "dog_id", nullable = false)
     private Dog dog;
 
-    public Double calculateSpeed(){
-        return courseLength/time;
+    public Double calculateDogSpeed(){
+
+        return this.speed = courseLength/time;
     }
 
     public Double calculateStandardTime(){
-    return  this.speed = courseLength/courseSpeed;
+    return courseLength/courseSpeed;
     }
 
     public Integer calcMistakes(){

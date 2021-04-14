@@ -1,6 +1,5 @@
 package com.example.dogcompetition.data;
 
-import com.example.dogcompetition.dto.ParticipantDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -75,25 +74,25 @@ public class Course {
 
     //записывает в базу результаты участников (нужен метод, который
     // возвращает отсортированный по penalty и времени список участников). View из DB?
-    public void calculateResult(ParticipantDto participantDto){
-        if (disqForExceedingTime(participantDto.getTime()) || disqForThreeRefusals(participantDto.getRefusals())
-                || disqualified(participantDto.getDisq())){
-            participantDto.setTime(500.0);
-            participantDto.setDisq("Disq");
-            participantDto.setFaults(0);
-            participantDto.setRefusals(0);
-            participantDto.setSpeed(0.0);
-            participantDto.setTimeFaults(0.0);
-            participantDto.setTotalFaults(500.0);
-        }
-        else {
-            var dogTime = participantDto.getTime();
-            var refusals = participantDto.getRefusals();
-            var faults = participantDto.getFaults();
-            calculateDogSpeed(length,dogTime);
-            var coursePenalties = calculatePenalties(faults, refusals);
-            var timePenalties = calculateTimePenalties(dogTime);
-            var totalPenalties = calculateTotalPenalties(faults, refusals, dogTime);
-        }
-    }
+//    public void calculateResult(ParticipantDto participantDto){
+//        if (disqForExceedingTime(participantDto.getTime()) || disqForThreeRefusals(participantDto.getRefusals())
+//                || disqualified(participantDto.getDisq())){
+//            participantDto.setTime(500.0);
+//            participantDto.setDisq("Disq");
+//            participantDto.setFaults(0);
+//            participantDto.setRefusals(0);
+//            participantDto.setSpeed(0.0);
+//            participantDto.setTimeFaults(0.0);
+//            participantDto.setTotalFaults(500.0);
+//        }
+//        else {
+//            var dogTime = participantDto.getTime();
+//            var refusals = participantDto.getRefusals();
+//            var faults = participantDto.getFaults();
+//            calculateDogSpeed(length,dogTime);
+//            var coursePenalties = calculatePenalties(faults, refusals);
+//            var timePenalties = calculateTimePenalties(dogTime);
+//            var totalPenalties = calculateTotalPenalties(faults, refusals, dogTime);
+//        }
+//    }
 }
