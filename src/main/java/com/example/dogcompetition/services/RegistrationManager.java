@@ -19,7 +19,7 @@ public class RegistrationManager {
                 dto.getSize(), dto.getLevel(), dto.getDogBreed(), handler);
         var result = new Result(0, 0.0,0,0, "", 0.0,0,0.0,0.0,0, 0.0, dog);
         var dm = new DatabaseManager();
-        dm.save(List.of(handler, dog, result));
+        dm.saveList(List.of(handler, dog, result));
     }
 
     public void saveParticipant(RegistrationDto dto) {
@@ -29,7 +29,7 @@ public class RegistrationManager {
                 dto.getDogDateOfBirth(), dto.getMicrochip(),
                 dto.getSize(), dto.getLevel(), dto.getDogBreed(), handler);
         var dm = new DatabaseManager();
-        dm.save(List.of(handler, dog));
+        dm.saveList(List.of(handler, dog));
     }
 }
 

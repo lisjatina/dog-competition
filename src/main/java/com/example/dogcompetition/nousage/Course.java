@@ -1,4 +1,4 @@
-package com.example.dogcompetition.data;
+package com.example.dogcompetition.nousage;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

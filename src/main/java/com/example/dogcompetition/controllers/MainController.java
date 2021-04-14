@@ -40,5 +40,4 @@ public class MainController {
         model.addAttribute("participants", dm.getDogs());
         return "list_of_participants";
     }
-
 }

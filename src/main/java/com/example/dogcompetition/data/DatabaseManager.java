@@ -1,4 +1,5 @@
 package com.example.dogcompetition.data;
+import com.example.dogcompetition.nousage.Course;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -27,7 +28,25 @@ public class DatabaseManager {
         }
     }
 
-    public void save(List <Object> items){
+    public void save(Object item) {
+        var session = factory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            session.save(item);
+            tx.commit();
+        } catch (HibernateException ex) {
+            if(tx != null) {
+                tx.rollback();
+            }
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+    }
+
+    public void saveList(List <Object> items){
 
         var session = factory.openSession();
         Transaction tx = null;
