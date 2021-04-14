@@ -169,6 +169,24 @@ public class DatabaseManager {
         return null;
     }
 
+    public void delete(Object obj) {
+        var session = factory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            session.delete(obj);
+            tx.commit();
+        } catch (HibernateException exception) {
+            if(tx != null) {
+                tx.rollback();
+            }
+            System.err.println(exception);
+        } finally {
+            session.close();
+        }
+    }
+
 
     // just an example how to map
 //    public List<Plant> getYourPlants(int id){

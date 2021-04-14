@@ -47,4 +47,12 @@ public class ApiController {
         dm.update(result);
         return result;
     }
+
+    @DeleteMapping("/res/{id}")
+    public void deleteCountry(@PathVariable int id) {
+        var result = dm.getResultById(id);
+        if(result != null) {
+            dm.delete(result);
+        }
+    }
 }
