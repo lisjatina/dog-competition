@@ -22,23 +22,23 @@ public class ResultManager {
                 .collect(Collectors.toList());
     }
 
-    public void saveResults(ParticipantDto dto, Integer id) {
-            var dm = new DatabaseManager();
-     var dog = dm.getById(id);
-        var result = new Result(
-                dto.getRunId(),
-                dto.getTime(),
-                dto.getFaults(),
-                dto.getRefusals(),
-                dto.getDisq(),
-                dto.getSpeed(),
-                dto.getMistakes(),
-                dto.getTimeFaults(),
-                dto.getTotalFaults(),
-                dog);
-
-        dm.save(List.of(result));
-    }
+//    public void saveResults(ParticipantDto dto, Integer id) {
+//            var dm = new DatabaseManager();
+//     var dog = dm.getById(id);
+//        var result = new Result(
+//                dto.getRunId(),
+//                dto.getTime(),
+//                dto.getFaults(),
+//                dto.getRefusals(),
+//                dto.getDisq(),
+//                dto.getSpeed(),
+//                dto.getMistakes(),
+//                dto.getTimeFaults(),
+//                dto.getTotalFaults(),
+//                dog);
+//
+//        dm.save(List.of(result));
+//    }
 //
 //    public void saveResult(ParticipantDto dto, Integer length, Double speed){
 //        var dm = new DatabaseManager();
@@ -88,10 +88,10 @@ public class ResultManager {
                         result.getFaults(),
                         result.getRefusals(),
                         result.getDisq(),
-                        result.calculateSpeed(course),
-                        result.calcMistakes(course),
-                        result.calcTimeFaults(course),
-                        result.calcTotalFaults(course)))
+                        result.calculateSpeed(),
+                        result.calcMistakes(),
+                        result.calcTimeFaults(),
+                        result.calcTotalFaults()))
                 .collect(Collectors.toList());
     }
 

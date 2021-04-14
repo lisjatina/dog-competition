@@ -35,27 +35,39 @@ public class Result {
     @Column (name = "total_faults")
     private Double totalFaults;
 
+    //the same for all dogs
+    @Column(name = "course_length")
+    private Integer courseLength;
+
+    //the same for all dogs
+    @Column(name = "course_speed")
+    private Double courseSpeed;
+
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn(name="dog_result_id", referencedColumnName = "dog_id", nullable = false)
     private Dog dog;
 
-    public Double calculateSpeed(Course course){
-    this.speed = course.calculateDogSpeed(course.getLength(), course.getSpeed());
-    return speed;
+    public Double calculateSpeed(){
+        return courseLength/time;
     }
 
-    public Integer calcMistakes(Course course){
-        this.mistakes = course.calculatePenalties(getFaults(),getRefusals());
-        return mistakes;
+    public Double calculateStandardTime(){
+    return  this.speed = courseLength/courseSpeed;
     }
 
-    public Double calcTimeFaults(Course course){
-        this.timeFaults= course.calculateTimePenalties(getTime());
-        return timeFaults;
+    public Integer calcMistakes(){
+        return   this.mistakes = (faults+refusals)*5;
     }
 
-    public Double calcTotalFaults(Course course){
-        this.totalFaults = course.calculateTotalPenalties(getFaults(), getRefusals(), getTime());
-        return totalFaults;
+    public Double calcTimeFaults(){
+        if (time>calculateStandardTime()){
+        return  this.timeFaults= time-calculateStandardTime();
+        }else {
+            return 0.0;
+        }
+    }
+
+    public Double calcTotalFaults(){
+        return  this.totalFaults = calcMistakes()+calcTimeFaults();
     }
 }
