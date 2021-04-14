@@ -41,7 +41,7 @@ public class MainController {
         return "list_of_participants";
     }
 
-    @GetMapping("result")
+    @GetMapping("/result")
     public String getIndex(){
         return "index";
     }
