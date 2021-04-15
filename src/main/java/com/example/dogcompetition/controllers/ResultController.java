@@ -8,19 +8,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.crypto.Data;
-
-
 @Controller
 public class ResultController {
 
    // showing list of entered results (correct)
+
     @GetMapping("/results")
     public String getResults(Model model){
         var dm = new DatabaseManager();
-        model.addAttribute("results", dm.getResults());
-          return "results";
+        model.addAttribute("results", dm.getSortedResults());
+        return "results";
     }
+//    @GetMapping("/results")
+//    public String getResults(Model model){
+//        var dm = new DatabaseManager();
+//        model.addAttribute("results", dm.getResults());
+//          return "results";
+//    }
 
    @GetMapping("/results/update")
     public String updateResults(Model model){

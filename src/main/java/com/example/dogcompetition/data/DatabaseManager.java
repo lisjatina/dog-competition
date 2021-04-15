@@ -120,6 +120,20 @@ public class DatabaseManager {
         return new ArrayList<>();
     }
 
+    public List<Result> getSortedResults() {
+        var session = factory.openSession();
+        var query = "FROM Result R ORDER BY R.time DESC, R.totalFaults DESC";
+
+        try {
+            return session.createQuery(query).list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
+
     public void update(Object item) {
         var session = factory.openSession();
         Transaction tx = null;
