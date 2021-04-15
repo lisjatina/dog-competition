@@ -15,7 +15,9 @@
 
         </div>
         <div class="col">
-            <form name="userData" id="userData" method="get" action="/results/update">
+<!--            method should be get, not to see password and e-mail in query string,
+but with post we get blank list of results-->
+            <form name="userData" id="userData" method="post" action="/results/update">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" name="email">
@@ -27,7 +29,6 @@
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
             <div style="margin-top: 10px" th:if="${hasError}" class="alert alert-danger" role="alert" th:text="${error}">
-
             </div>
         </div>
         <div class="col">

@@ -16,7 +16,7 @@
     <h5>Save results for</h5>
     <div th:each="result:${results}" th:text="${result.getDog().getPetName()}"></div>
 
-    <form name="addResult" id="addResult" method="post" action="/register">
+    <form name="addResult" id="addResult" method="post" action="/results/update/">
         <div class="mb-3">
             <label for="dogTime" class="form-label">Dog time:</label>
             <input  required type="number" min="0" value="0" step="0.01" name="dogTime" id="dogTime" maxlength="100">

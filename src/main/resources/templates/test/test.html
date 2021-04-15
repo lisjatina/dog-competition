@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function sendData() {
+            $.ajax({
+                type: "POST",
+                url: "/results/update",
+                success: function (data) {
+                    let obj = JSON.parse(data);
+                    obj.forEach(element => $('#serverData').append(element.user));
+                    console.log(data);
+                },
+            });
+        }
+    </script>
+    <title>Title</title>
+</head>
+<body>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add results
+</button>
+
+<div id="serverData"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add results for
+                <div th:each="r:${results}" th:text="${r.getDog().getId()}"></div></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form name="addResult" id="addResult" method="post" action="/results/update/">
+                    <div class="mb-3">
+                        <label for="dogTime" class="form-label">Dog time:</label>
+                        <input  required type="number" min="0" value="0" step="0.01" name="dogTime" id="dogTime" maxlength="100">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="faults" class="form-label">Faults:</label>
+                        <input required type="number" min="0" value="0" name="faults" id="faults" maxlength="100">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="refusals" class="form-label">Refusals:</label>
+                        <input required type="number" min="0" value="0" name="refusals" id="refusals" maxlength="100">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="speed" class="form-label">Course speed:</label>
+                        <input required type="number" min="0" value="0" step="0.01"  name="speed" id="speed" maxlength="100">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="length" class="form-label">Course length</label>
+                        <input required type="number" min="0" value="0"  id="length" name="length">
+                    </div>
+<!--                    <button type="submit" class="btn btn-primary">Save result</button>-->
+
+                    <div class="mb-3"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="sendData()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -8,38 +8,63 @@ import com.example.dogcompetition.services.SessionData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class ResultController {
 
+    private DatabaseManager dm;
+
+    public ResultController() {
+        dm = new DatabaseManager();
+    }
+
    // showing list of entered results in descending order (correct)
     @GetMapping("/results")
     public String getResults(Model model){
-        var dm = new DatabaseManager();
         model.addAttribute("results", dm.getSortedResults());
         return "results";
     }
 
-   @GetMapping("/results/update")
+   @PostMapping ("/results/update")
     public String updateResults(Model model, HttpSession session){
-       var dm = new DatabaseManager();
-       var user = (User) session.getAttribute(SessionData.User);
+      var user = (User) session.getAttribute(SessionData.User);
        model.addAttribute("user", user);
-       model.addAttribute("sessionId", session.getId());
+//       model.addAttribute("sessionId", session.getId());
        model.addAttribute("results", dm.getResults());
         return  "update";
     }
 
     // should be Model And View with re-direct back to update page (/results/update)
-    @PostMapping("/results/update/{id}")
-    public String updateResult(@PathVariable int id, Model model, ResultDto dto){
-        var rm = new ResultManager();
-        var updated = rm.updateResult(id, dto);
-        model.addAttribute("result", updated);
+    // this worked (incorrectly), commented for checking other
+//    @PostMapping("/results/update/{id}")
+//    public String updateResult(@PathVariable int id, Model model, ResultDto dto){
+//        var rm = new ResultManager();
+//        var updated = rm.updateResult(id, dto);
+//        dm.updateResult(updated);
+//        model.addAttribute("result", dm.getResults());
+//        return "add_results";
+//    }
+
+    @PostMapping ("/results/update/{id}")
+    public ModelAndView updateCurrentResult(@PathVariable int id, Model model, ResultDto dto){
+    var rm = new ResultManager();
+    var updated = rm.updateResult(id, dto);
+    dm.updateResult(updated);
+    model.addAttribute("result", dm.getResults());
+    return new ModelAndView("redirect:/results/update");
+    }
+
+    // this is form for filling results
+    @PostMapping("/results/update/add")
+    public String addRes( Model model){
+
         return "add_results";
     }
+
+
 
 
 //    @GetMapping("/results/update/")
