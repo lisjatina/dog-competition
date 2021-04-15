@@ -39,11 +39,10 @@ public class UserController {
             model.addAttribute("hasError", true);
             return "login";
         }
-
         request.getSession().setAttribute(SessionData.User, user);
 
         model.addAttribute("user", user);
 
-        return "add_results";
+        return "update";
         }
     }

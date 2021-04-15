@@ -22,38 +22,44 @@
 </nav>
 </div>
 </div>
+<!--or maybe method = post?-->
+<form action="/results/update/" method="get">
 <table class="table table-striped">
     <thead>
     <tr>
-        <th scope="col">Place</th>
+        <th scope="col">#</th>
         <th scope="col">Dog</th>
         <th scope="col">Handler</th>
-        <th scope="col">Time(s)</th>
-        <th scope="col">Speed(m/s)</th>
-        <th scope="col">Mistakes</th>
-        <th scope="col">Time faults</th>
-        <th scope="col">Total faults</th>
+        <th scope="col">AddResults</th>
 
     </tr>
     </thead>
     <tbody>
 
     <tr th:each="result: ${results} ">
+<!--        <td>-->
+<!--            <div class="radio">-->
+<!--                <label>-->
+<!--                    <input type="radio" id="res" name="res" th:value="${result.getId()}">-->
+<!--                </label>-->
+<!--            </div>-->
+<!--        </td>-->
         <th scope="row" th:text="${resultStat.index+1}"></th>
         <td th:text="${result.getDog().getPetName()+ ', ' + result.getDog().getPedigreeName()
         + ', ' + result.getDog().getBreed()}"></td>
         <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
         <td>
-        </td>
-        <td th:text="${result.getTime()}"></td>
-        <td th:text="${result.getSpeed()}"></td>
-        <td th:text="${result.getMistakes()}"></td>
-        <td th:text="${result.getTimeFaults()}"></td>
-        <td th:text="${result.getTotalFaults()}"></td>
+            <button type="button" class="btn btn-warning">
+                <a th:href="${'/results/update/add' +result.getId()}" >Add result</a>
 
+               <form>
+   </form>
+            </button>
+        </td>
     </tr>
     </tbody>
 </table>
+</form>
 
 </body>
 </html>
