@@ -8,6 +8,7 @@ import com.example.dogcompetition.services.SessionData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -23,10 +24,11 @@ public class ResultController {
 
    @GetMapping("/results/update")
     public String updateResults(Model model, HttpSession session){
+       var dm = new DatabaseManager();
        var user = (User) session.getAttribute(SessionData.User);
-        var dm = new DatabaseManager();
-        model.addAttribute("user", user);
-        model.addAttribute("results", dm.getResults());
+       model.addAttribute("user", user);
+       model.addAttribute("sessionId", session.getId());
+       model.addAttribute("results", dm.getResults());
         return  "update";
     }
 
