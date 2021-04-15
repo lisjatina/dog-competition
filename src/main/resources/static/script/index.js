@@ -1,6 +1,6 @@
 var columnDefs = [
     {headerName: "Place", field: "id", filter: true, sortable: true},
-    {headerName: "Dog", valueGetter: "dog", rowGroupIndex: 1, filter: true, sortable: true},
+    {headerName: "Dog", field: "dog", filter: true, sortable: true},
     {headerName: "Handler", field: "dog", filter: true, sortable: true},
     {headerName: "Time (s)", field: "time", filter: true, sortable: true},
     {headerName: "Speed (m/s)", field: "speed", filter: true, sortable: true},
