@@ -32,7 +32,7 @@ public class ResultController {
         return  "update";
     }
 
-    // without web API
+    // should be Model And View with re-direct back to update page (/results/update)
     @PostMapping("/results/update/{id}")
     public String updateResult(@PathVariable int id, Model model, ResultDto dto){
         var rm = new ResultManager();
