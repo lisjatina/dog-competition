@@ -1,3 +1,8 @@
+.grid {
+    width: 900px;
+    height: 500px;
+}
+
 .container-with-top-margin {
     margin-top: 10px;
 }
@@ -5,12 +10,6 @@
 . custom{
     margin-bottom: 40px !important;
     margin-top: 40px !important;
-}
-
-.btn-my-own {
-    color: black;
-    background-color: cadetblue !important;
-    border-color: blue;
 }
 
 .mt-0 {

@@ -13,8 +13,6 @@ public class ApiController {
         dm = new DatabaseManager();
     }
 
-
-
     // testing web API to get list of results
     @GetMapping("/res")
     public Iterable<Result> getCountries() {
