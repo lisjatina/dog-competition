@@ -23,27 +23,67 @@
 <div class="container">
     <div class="mb-3"></div>
 </div>
+
+<h5>Results for A0</h5>
 <table class="table table-striped">
     <thead>
     <tr>
         <th scope="col">Place</th>
         <th scope="col">Dog</th>
         <th scope="col">Handler</th>
+        <th scope="col">Class</th>
         <th scope="col">Time(s)</th>
         <th scope="col">Speed(m/s)</th>
         <th scope="col">Mistakes</th>
         <th scope="col">Time faults</th>
         <th scope="col">Total faults</th>
         <th scope="col">Disq</th>
+
     </tr>
     </thead>
     <tbody>
 
-    <tr th:each="result: ${results} ">
+    <tr th:each="result: ${agility0} ">
         <th scope="row" th:text="${resultStat.index+1}"></th>
         <td th:text="${result.getDog().getPetName()+ ', ' + result.getDog().getPedigreeName()
         + ', ' + result.getDog().getBreed()}"></td>
         <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
+        <td th:text="${result.getDog().getLevel()}"></td>
+        <td th:text="${result.getTime()}"></td>
+        <td th:text="${result.getSpeed()}"></td>
+        <td th:text="${result.getMistakes()}"></td>
+        <td th:text="${result.getTimeFaults()}"></td>
+        <td th:text="${result.getTotalFaults()}"></td>
+        <td th:text="${result.getDisq()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h5>Results for A1</h5>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Place</th>
+        <th scope="col">Dog</th>
+        <th scope="col">Handler</th>
+        <th scope="col">Class</th>
+        <th scope="col">Time(s)</th>
+        <th scope="col">Speed(m/s)</th>
+        <th scope="col">Mistakes</th>
+        <th scope="col">Time faults</th>
+        <th scope="col">Total faults</th>
+        <th scope="col">Disq</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="result: ${agility1} ">
+        <th scope="row" th:text="${resultStat.index+1}"></th>
+        <td th:text="${result.getDog().getPetName()+ ', ' + result.getDog().getPedigreeName()
+        + ', ' + result.getDog().getBreed()}"></td>
+        <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
+        <td th:text="${result.getDog().getLevel()}"></td>
         <td th:text="${result.getTime()}"></td>
         <td th:text="${result.getSpeed()}"></td>
         <td th:text="${result.getMistakes()}"></td>
@@ -53,6 +93,77 @@
    </tr>
     </tbody>
     </table>
+<h5>Results for A2</h5>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Place</th>
+        <th scope="col">Dog</th>
+        <th scope="col">Handler</th>
+        <th scope="col">Class</th>
+        <th scope="col">Time(s)</th>
+        <th scope="col">Speed(m/s)</th>
+        <th scope="col">Mistakes</th>
+        <th scope="col">Time faults</th>
+        <th scope="col">Total faults</th>
+        <th scope="col">Disq</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="result: ${agility2} ">
+        <th scope="row" th:text="${resultStat.index+1}"></th>
+        <td th:text="${result.getDog().getPetName()+ ', ' + result.getDog().getPedigreeName()
+        + ', ' + result.getDog().getBreed()}"></td>
+        <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
+        <td th:text="${result.getDog().getLevel()}"></td>
+        <td th:text="${result.getTime()}"></td>
+        <td th:text="${result.getSpeed()}"></td>
+        <td th:text="${result.getMistakes()}"></td>
+        <td th:text="${result.getTimeFaults()}"></td>
+        <td th:text="${result.getTotalFaults()}"></td>
+        <td th:text="${result.getDisq()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h5>Results for A3</h5>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Place</th>
+        <th scope="col">Dog</th>
+        <th scope="col">Handler</th>
+        <th scope="col">Class</th>
+        <th scope="col">Time(s)</th>
+        <th scope="col">Speed(m/s)</th>
+        <th scope="col">Mistakes</th>
+        <th scope="col">Time faults</th>
+        <th scope="col">Total faults</th>
+        <th scope="col">Disq</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="result: ${agility3} ">
+        <th scope="row" th:text="${resultStat.index+1}"></th>
+        <td th:text="${result.getDog().getPetName()+ ', ' + result.getDog().getPedigreeName()
+        + ', ' + result.getDog().getBreed()}"></td>
+        <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
+        <td th:text="${result.getDog().getLevel()}"></td>
+        <td th:text="${result.getTime()}"></td>
+        <td th:text="${result.getSpeed()}"></td>
+        <td th:text="${result.getMistakes()}"></td>
+        <td th:text="${result.getTimeFaults()}"></td>
+        <td th:text="${result.getTotalFaults()}"></td>
+        <td th:text="${result.getDisq()}"></td>
+    </tr>
+    </tbody>
+</table>
 
 <!--        <td th:text="${#numbers.formatDecimal(prod.price, 1, 2)}">0.99</td>-->
 </body>

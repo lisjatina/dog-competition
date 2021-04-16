@@ -70,9 +70,10 @@ public class DatabaseManager {
 
    public List<Dog> getDogs(){
         var session = factory.openSession();
+       var query = "FROM Dog D ORDER BY D.level asc, D.size DESC";
 
         try {
-            return session.createQuery("FROM Dog").list();
+            return session.createQuery(query).list();
         } catch (HibernateException exception) {
             System.err.println(exception);
         } finally {
@@ -123,6 +124,62 @@ public class DatabaseManager {
     public List<Result> getSortedResults() {
         var session = factory.openSession();
         var query = "FROM Result R ORDER BY R.time DESC, R.totalFaults DESC";
+
+        try {
+            return session.createQuery(query).list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Result> getSortedResultsForA0() {
+        var session = factory.openSession();
+        var query = "FROM Result R  where R.dog.level like'A0' ORDER BY R.dog.size, R.time DESC, R.totalFaults DESC";
+
+        try {
+            return session.createQuery(query).list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Result> getSortedResultsForA1() {
+        var session = factory.openSession();
+        var query = "FROM Result R  where R.dog.level like'A1' ORDER BY R.dog.size, R.time DESC, R.totalFaults DESC";
+
+        try {
+            return session.createQuery(query).list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Result> getSortedResultsForA2() {
+        var session = factory.openSession();
+        var query = "FROM Result R  where R.dog.level like'A2' ORDER BY R.dog.size, R.time DESC, R.totalFaults DESC";
+
+        try {
+            return session.createQuery(query).list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Result> getSortedResultsForA3() {
+        var session = factory.openSession();
+        var query = "FROM Result R  where R.dog.level like'A3' ORDER BY R.dog.size, R.time DESC, R.totalFaults DESC";
 
         try {
             return session.createQuery(query).list();
@@ -200,33 +257,4 @@ public class DatabaseManager {
             session.close();
         }
     }
-
-
-    // just an example how to map
-//    public List<Plant> getYourPlants(int id){
-//        var myGarden = getGarden().stream().
-//                filter(g-> (g.getUserId().equals(id))).collect(Collectors.toList());
-//
-//        var myPlants = myGarden.stream()
-//                .map(p -> new Plant(
-//                        p.getPlant().getId(),
-//                        p.getPlant().getImageId(),
-//                        p.getPlant().getScienceName(),
-//                        p.getPlant().getName(),
-//                        p.getPlant().getDescription(),
-//                        p.getPlant().getMoisture(),
-//                        p.getPlant().getSunlight(),
-//                        p.getPlant().getWatering(),
-//                        p.getPlant().getPetToxic(),
-//                        p.getPlant().getType(),
-//                        p.getPlant().getBloom(),
-//                        p.getPlant().getHumidity()))
-//                .collect(Collectors.toList());
-//
-//        return myPlants;
-//    }
-
-
-
-
 }

@@ -24,7 +24,10 @@ public class ResultController {
    // showing list of entered results in descending order (correct)
     @GetMapping("/results")
     public String getResults(Model model){
-        model.addAttribute("results", dm.getSortedResults());
+        model.addAttribute("agility0", dm.getSortedResultsForA0());
+        model.addAttribute("agility1", dm.getSortedResultsForA1());
+        model.addAttribute("agility2", dm.getSortedResultsForA2());
+        model.addAttribute("agility3", dm.getSortedResultsForA3());
         return "results";
     }
 
