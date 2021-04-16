@@ -31,7 +31,16 @@ public class ResultController {
         return "results";
     }
 
-   @PostMapping ("/results/update")
+    @PostMapping ("/results/update/{id}")
+    public ModelAndView updateCurrentResult(@PathVariable int id, Model model, ResultDto dto){
+        var rm = new ResultManager();
+        var updated = rm.updateResult(id, dto);
+        dm.updateResult(updated);
+        model.addAttribute("result", dm.getResults());
+        return new ModelAndView("redirect:/results/update");
+    }
+
+   @PostMapping("/results/update")
     public String updateResults(Model model, HttpSession session){
       var user = (User) session.getAttribute(SessionData.User);
        model.addAttribute("user", user);
@@ -40,35 +49,12 @@ public class ResultController {
         return  "update";
     }
 
-    // should be Model And View with re-direct back to update page (/results/update)
-    // this worked (incorrectly), commented for checking other
-//    @PostMapping("/results/update/{id}")
-//    public String updateResult(@PathVariable int id, Model model, ResultDto dto){
-//        var rm = new ResultManager();
-//        var updated = rm.updateResult(id, dto);
-//        dm.updateResult(updated);
-//        model.addAttribute("result", dm.getResults());
+//   // this is form for filling results
+//    @PostMapping("/results/update/add")
+//    public String addRes( Model model){
+//
 //        return "add_results";
 //    }
-
-    @PostMapping ("/results/update/{id}")
-    public ModelAndView updateCurrentResult(@PathVariable int id, Model model, ResultDto dto){
-    var rm = new ResultManager();
-    var updated = rm.updateResult(id, dto);
-    dm.updateResult(updated);
-    model.addAttribute("result", dm.getResults());
-    return new ModelAndView("redirect:/results/update");
-    }
-
-    // this is form for filling results
-    @PostMapping("/results/update/add")
-    public String addRes( Model model){
-
-        return "add_results";
-    }
-
-
-
 
 //    @GetMapping("/results/update/")
 //    public ModelAndView updateCurrentResult(@RequestParam int id, ResultDto dto){

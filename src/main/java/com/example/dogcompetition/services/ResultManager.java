@@ -6,7 +6,6 @@ import com.example.dogcompetition.dto.ResultDto;
 
 public class ResultManager {
 
-
     public Result updateResult(Integer id, ResultDto dto) {
         var dm = new DatabaseManager();
         var result = dm.getResultById(id);
