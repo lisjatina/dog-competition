@@ -18,6 +18,50 @@
             });
         }
     </script>
+    <script>
+        function deleteData() {
+
+            let settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://localhost:8080/update/results",
+                "method": "DELETE",
+                "headers": {
+                    "cache-control": "no-cache",
+                }
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+
+        }
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/results/update",
+        //         success: function (data) {
+        //             let obj = JSON.parse(data);
+        //             obj.forEach(element => $('#serverData').append(element.user));
+        //             console.log(data);
+        //         },
+        //     });
+        // }
+        //
+        // let settings = {
+        //
+        //     "async": true,
+        //     "crossDomain": true,
+        //     "url": "http://localhost:8080/api/countries/244",
+        //     "method": "DELETE",
+        //     "headers": {
+        //         "cache-control": "no-cache",
+        //     }
+        // }
+        // $.ajax(settings).done(function (response) {
+        //     console.log(response);
+        // });
+
+    </script>
     <title>Title</title>
 </head>
 <body>
