@@ -15,7 +15,7 @@ public class ApiController {
 
     // testing web API to get list of results
     @GetMapping("/res")
-    public Iterable<Result> getCountries() {
+    public Iterable<Result> getResults() {
         return  dm.getResults();
     }
     // get result by ID
@@ -25,7 +25,7 @@ public class ApiController {
     }
     // saving result
     @PostMapping("/res")
-    public Result addCountry(@RequestBody Result result)
+    public Result addResult(@RequestBody Result result)
     {
         if(result == null) {
             return null;
@@ -47,7 +47,7 @@ public class ApiController {
     }
 
     @DeleteMapping("/res/{id}")
-    public void deleteCountry(@PathVariable int id) {
+    public void deleteResult(@PathVariable int id) {
         var result = dm.getResultById(id);
         if(result != null) {
             dm.delete(result);

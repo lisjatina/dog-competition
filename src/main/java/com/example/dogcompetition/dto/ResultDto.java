@@ -12,4 +12,30 @@ public class ResultDto {
     private Double speed;
     private Integer length;
 
+    public Double calculateDogSpeed(){
+
+        return length/dogTime;
+    }
+
+    public Double calculateStandardTime(){
+        return length/speed;
+    }
+
+    public Integer calcMistakes(){
+        return   (faults+refusals)*5;
+    }
+
+    public Double calcTimeFaults(){
+        if (dogTime>calculateStandardTime()){
+            return  dogTime-calculateStandardTime();
+        }else {
+            return 0.0;
+        }
+    }
+
+    public Double calcTotalFaults(){
+        return  calcMistakes()+calcTimeFaults();
+    }
 }
+
+
