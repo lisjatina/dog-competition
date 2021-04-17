@@ -40,7 +40,34 @@ public class ResultController {
       }
        model.addAttribute("user", user);
        model.addAttribute("results", dm.getResults());
+       model.addAttribute("confirmDelete", 0);
+
         return new ModelAndView("update");
+    }
+
+    @GetMapping("/confirm/{id}")
+    public String confirmDelete(@PathVariable int id, Model model){
+//        var user = (User) session.getAttribute(SessionData.User);
+//        model.addAttribute("user", user);
+
+        model.addAttribute("results", dm.getResults());
+        model.addAttribute("confirmDelete", id);
+
+        return  "update";
+    }
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteItem(@PathVariable int id, Model model){
+//        var user = (User) session.getAttribute(SessionData.User);
+//        model.addAttribute("user", user);
+
+        var dataToDelete = dm.getResultById(id);
+
+        if (dataToDelete != null){
+            dm.delete(dataToDelete);
+        }
+
+        return new ModelAndView("redirect:/results/update");
     }
 
     @ResponseStatus(HttpStatus.FORBIDDEN)
