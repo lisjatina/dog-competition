@@ -1,6 +1,19 @@
+
+// function colSpan(params: ColSpanParams) => number;
+//
+// interface ColSpanParams {
+//     node: any, // row node in question
+//         data: RowNode, // data for the row
+//         colDef: ColDef, // the col def for the column
+//         column: Column, // the column object in question
+//         api: GridApi, // the grid's API
+//         columnApi: ColumnApi, // the grid's column API
+//         context: any // the provided context
+
+
 let columnDefs = [
     {headerName: "Place", field: "id", filter: true, sortable: true},
-    {headerName: "Dog", field: "dog", filter: true, sortable: true},
+    {headerName: "Dog", field: "dog", colSpan: param => params.data.pedigreeName, filter: true, sortable: true},
     {headerName: "Handler", field: "dog", filter: true, sortable: true},
     {headerName: "Time (s)", field: "time", filter: true, sortable: true},
     {headerName: "Speed (m/s)", field: "speed", filter: true, sortable: true},
