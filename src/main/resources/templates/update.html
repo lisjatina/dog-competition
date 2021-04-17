@@ -28,7 +28,6 @@
             Home</a>
         <a class="btn btn-primary" href="/participants" role="button">Participants</a>
         <a class="btn btn-primary" href="/results" role="button">Results</a>
-        <a class="btn btn-warning" href="/delete" role="button">Delete</a>
         <a class="btn btn-primary" href="/home" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open"
                  viewBox="0 0 16 16">
@@ -62,7 +61,6 @@
                     th:attr="data-result-id=${result.getId()}">
                 Add results
             </button>
-
         </td>
         <td><a th:if="${confirmDelete == 0}" class="btn btn-danger" th:href="${'/confirm/' + result.getId()}" role="button">Delete</a>
             <div th:if="${confirmDelete == result.getId()}">
@@ -70,8 +68,6 @@
                 <a class="btn btn-primary" th:href="${'/results/update'}">Cancel</a>
                 <a class="btn btn-danger" th:href="${'/delete/' + result.getId()}">Delete</a>
             </div>
-        </td>
-
         </td>
     </tr>
     </tbody>
