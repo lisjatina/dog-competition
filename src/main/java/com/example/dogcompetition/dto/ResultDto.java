@@ -11,6 +11,7 @@ public class ResultDto {
     private Integer refusals;
     private Double speed;
     private Integer length;
+    private String disq;
 
 }
 

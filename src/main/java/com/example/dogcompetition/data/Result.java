@@ -47,12 +47,16 @@ public class Result {
     @JoinColumn(name="dog_result_id", referencedColumnName = "dog_id", nullable = false)
     private Dog dog;
 
-    public Double calculateDogSpeed(){
+    private Double calculateMaxTime() {
+        return (calculateAndGetStandardTime()* 2);
+    }
+
+    public Double calculateAndSetDogSpeed(){
 
         return this.speed = courseLength/time;
     }
 
-    public Double calculateStandardTime(){
+    public Double calculateAndGetStandardTime(){
     return courseLength/courseSpeed;
     }
 
@@ -60,15 +64,48 @@ public class Result {
         return   this.mistakes = (faults+refusals)*5;
     }
 
-    public Double calcTimeFaults(){
-        if (time>calculateStandardTime()){
-        return  this.timeFaults= time-calculateStandardTime();
+    public Double calcAndSetTimeFaults(){
+        if (time> calculateAndGetStandardTime()){
+        return  this.timeFaults= time- calculateAndGetStandardTime();
         }else {
             return this.timeFaults=0.0;
         }
     }
 
     public Double calcTotalFaults(){
-        return  this.totalFaults = calcMistakes()+calcTimeFaults();
+        return  this.totalFaults = calcMistakes()+ calcAndSetTimeFaults();
+    }
+
+    public Boolean disqForExceedingTime() {
+        if (time> calculateMaxTime()) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean disqForThreeRefusals() {
+        if (refusals >= 3) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean disqualified() {
+        if (disq.equalsIgnoreCase("disq")) {
+            return true;
+        }
+        return false;
+    }
+
+    public void dogIsDisqualified(){
+        if(disqualified() || disqForThreeRefusals() || disqForExceedingTime()){
+            this.time = 500.0;
+            this.disq = "Disq";
+            this.faults = 0;
+            this.refusals = 0;
+            this.speed = 0.0;
+            this.timeFaults = 0.0;
+            this.totalFaults = 500.0;
+        }
     }
 }

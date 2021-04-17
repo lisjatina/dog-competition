@@ -17,7 +17,8 @@ public class RegistrationManager {
         var dog = new Dog(dto.getDogId(), dto.getDogFullName(), dto.getDogPetName(),
                 dto.getDogDateOfBirth(), dto.getMicrochip(),
                 dto.getSize(), dto.getLevel(), dto.getDogBreed(), handler);
-        var result = new Result(0, 0.0,0,0, "", 0.0,0,0.0,0.0,0, 0.0, dog);
+        var result = new Result(null, null,null,null, "", null,
+                null,null,null,null, null, dog);
         var dm = new DatabaseManager();
         dm.saveList(List.of(handler, dog, result));
     }

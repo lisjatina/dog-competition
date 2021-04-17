@@ -20,7 +20,8 @@ function sendData(event, form, modal) {
         faults: form.find('input[name="faults"]').val(),
         refusals: form.find('input[name="refusals"]').val(),
         speed: form.find('input[name="speed"]').val(),
-        length: form.find('input[name="length"]').val()
+        length: form.find('input[name="length"]').val(),
+        disq: form.find('input[name="disq"]').val()
     };
     $.ajax({
         contentType: "application/json",
@@ -28,13 +29,8 @@ function sendData(event, form, modal) {
         url: `/api/results/${resultId}`,
         dataType: 'json',
         data: JSON.stringify(data)
-    }).done(function () {
-        console.log("ok");
-        modal.modal('hide');
+    }).done(function (response) {
+        console.log(response);
+        modal.modal('toggle');
     });
 }
-
-//
-// $('#btnSaveResult').bind('click', sendData()){
-//     console.log('button clicked')
-// };

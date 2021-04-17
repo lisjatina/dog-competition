@@ -40,8 +40,6 @@ public class ResultController {
       }
        model.addAttribute("user", user);
        model.addAttribute("results", dm.getResults());
-       model.addAttribute("confirmDelete", 0);
-
         return new ModelAndView("update");
     }
 
@@ -69,6 +67,9 @@ public class ResultController {
 
         return new ModelAndView("redirect:/results/update");
     }
+
+
+
 
     @ResponseStatus(HttpStatus.FORBIDDEN)
     class ForbiddenException extends RuntimeException {}
