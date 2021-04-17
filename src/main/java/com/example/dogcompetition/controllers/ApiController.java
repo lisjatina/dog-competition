@@ -2,7 +2,11 @@ package com.example.dogcompetition.controllers;
 
 import com.example.dogcompetition.data.DatabaseManager;
 import com.example.dogcompetition.data.Result;
+import com.example.dogcompetition.dto.ResultDto;
+import com.example.dogcompetition.services.ResultManager;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,17 +18,17 @@ public class ApiController {
     }
 
     // testing web API to get list of results
-    @GetMapping("/res")
+    @GetMapping("/results")
     public Iterable<Result> getResults() {
         return  dm.getResults();
     }
     // get result by ID
-    @GetMapping("/res/{id}")
+    @GetMapping("/results/{id}")
     public Result getResult(@PathVariable int id) {
         return dm.getResultById(id);
     }
     // saving result
-    @PostMapping("/res")
+    @PostMapping("/results")
     public Result addResult(@RequestBody Result result)
     {
         if(result == null) {
@@ -33,20 +37,27 @@ public class ApiController {
         dm.save(result);
         return result;
     }
+/*
+    GET /api/results
+    GET /api/results/{id}
+    GET /api/dogs
+    GET /api/dogs/{id}
+    POST /api/results   // add new result
+    PUT /api/results/{id} // update result
+    DELETE /api/results/{id} // delete result
+  */
     // update result by Id
-    @PutMapping("/res/{id}")
-    public Result updateOneResult(@RequestBody Result result, @PathVariable int id){
-        if (result == null){
-            return null;
+    @PutMapping("/results/{id}")
+    public ResponseEntity<Void> updateOneResult(@RequestBody ResultDto dto, @PathVariable int id){
+        if (dto == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        if (id != result.getId()){
-            return null;
-        }
-        dm.update(result);
-        return result;
+        var rm = new ResultManager();
+        rm.updateResult(id,dto);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/res/{id}")
+    @DeleteMapping("/results/{id}")
     public void deleteResult(@PathVariable int id) {
         var result = dm.getResultById(id);
         if(result != null) {

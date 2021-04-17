@@ -64,7 +64,7 @@ public class Result {
         if (time>calculateStandardTime()){
         return  this.timeFaults= time-calculateStandardTime();
         }else {
-            return 0.0;
+            return this.timeFaults=0.0;
         }
     }
 

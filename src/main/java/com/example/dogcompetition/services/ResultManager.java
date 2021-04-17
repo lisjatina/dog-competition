@@ -14,10 +14,11 @@ public class ResultManager {
         result.setTime(dto.getDogTime());
         result.setRefusals(dto.getRefusals());
         result.setFaults(dto.getFaults());
-        result.setSpeed(result.calculateDogSpeed());
-        result.setMistakes(result.calcMistakes());
-        result.setTimeFaults(result.calcTimeFaults());
-        result.setTotalFaults(result.calcTotalFaults());
+        result.calculateDogSpeed();
+        result.calcMistakes();
+        result.calcTimeFaults();
+        result.calcTotalFaults();
+        dm.updateResult(result);
         return result;
     }
 }

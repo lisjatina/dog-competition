@@ -123,7 +123,7 @@ public class DatabaseManager {
 
     public List<Result> getSortedResults() {
         var session = factory.openSession();
-        var query = "FROM Result R ORDER BY R.time DESC, R.totalFaults DESC";
+        var query = "FROM Result R ORDER BY R.totalFaults asc, R.time asc";
 
         try {
             return session.createQuery(query).list();
@@ -137,7 +137,7 @@ public class DatabaseManager {
 
     public List<Result> getSortedResultsForA0() {
         var session = factory.openSession();
-        var query = "FROM Result R  where R.dog.level like'A0' ORDER BY R.dog.size, R.time DESC, R.totalFaults DESC";
+        var query = "FROM Result R  where R.dog.level like'A0' ORDER BY R.totalFaults asc, R.time asc";
 
         try {
             return session.createQuery(query).list();
@@ -151,7 +151,7 @@ public class DatabaseManager {
 
     public List<Result> getSortedResultsForA1() {
         var session = factory.openSession();
-        var query = "FROM Result R  where R.dog.level like'A1' ORDER BY R.dog.size, R.time DESC, R.totalFaults DESC";
+        var query = "FROM Result R  where R.dog.level like'A1' ORDER BY R.totalFaults asc, R.time asc";
 
         try {
             return session.createQuery(query).list();
@@ -165,7 +165,7 @@ public class DatabaseManager {
 
     public List<Result> getSortedResultsForA2() {
         var session = factory.openSession();
-        var query = "FROM Result R  where R.dog.level like'A2' ORDER BY R.dog.size, R.time DESC, R.totalFaults DESC";
+        var query = "FROM Result R  where R.dog.level like'A2' ORDER BY R.totalFaults asc, R.time asc";
 
         try {
             return session.createQuery(query).list();
@@ -179,7 +179,7 @@ public class DatabaseManager {
 
     public List<Result> getSortedResultsForA3() {
         var session = factory.openSession();
-        var query = "FROM Result R  where R.dog.level like'A3' ORDER BY R.dog.size, R.time DESC, R.totalFaults DESC";
+        var query = "FROM Result R  where R.dog.level like'A3' ORDER BY R.totalFaults asc, R.time asc";
 
         try {
             return session.createQuery(query).list();

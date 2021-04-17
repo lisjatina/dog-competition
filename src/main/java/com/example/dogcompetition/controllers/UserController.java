@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,19 +31,19 @@ public class UserController {
 
     //HttpSession session
     @PostMapping("/login")
-    public String login(LoginDto userData, Model model, HttpServletRequest request) {
+    public ModelAndView login(LoginDto userData, Model model, HttpServletRequest request) {
 
         var user = repo.login(userData.getEmail(), userData.getPwd());
 
         if (user == null) {
             model.addAttribute("error", "Unable to login");
             model.addAttribute("hasError", true);
-            return "login";
+            return new ModelAndView("redirect:/login");
         }
         request.getSession().setAttribute(SessionData.User, user);
 
         model.addAttribute("user", user);
 
-        return "update";
+        return new ModelAndView("redirect:/results/update");
         }
     }
