@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class UserController {
 
-    private DatabaseManager repo;
+    private DatabaseManager dm;
 
     public UserController() {
-        repo = new DatabaseManager();
+        dm = new DatabaseManager();
     }
 
     @GetMapping("/login")
@@ -33,7 +33,7 @@ public class UserController {
     @PostMapping("/login")
     public ModelAndView login(LoginDto userData, Model model, HttpServletRequest request) {
 
-        var user = repo.login(userData.getEmail(), userData.getPwd());
+        var user = dm.login(userData.getEmail(), userData.getPwd());
 
         if (user == null) {
             model.addAttribute("error", "Unable to login");
