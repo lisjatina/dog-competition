@@ -47,8 +47,6 @@
         <th scope="col">Handler</th>
         <th scope="col">Add Results</th>
         <th scope="col" width="500px">Delete Results</th>
-
-
     </tr>
     </thead>
     <tbody>
@@ -71,20 +69,12 @@
                 <a class="btn btn-danger" th:href="${'/delete/' + result.getId()}">Delete</a>
             </div>
         </td>
-
-        </td>
-<!--            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">-->
-<!--                Delete result-->
-<!--            </button>-->
-
-<!--            <div id="serverData"></div>-->
-
     </tr>
     </tbody>
 </table>
 
 
-<!-- Modal -->
+<!-- Pop-up window for saving results -->
 <div class="modal fade" id="addResultsModal" tabindex="-1" aria-labelledby="addResultsLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -94,9 +84,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- <form name="addResult" id="addResult" method="post" action="/results/update/">-->
                 <form>
-
                     <input id="resultIdInput" name="resultId" type="hidden">
                     <div class="mb-3">
                         <label for="dogTime" class="form-label">Dog time:</label>
@@ -123,6 +111,10 @@
                     <div class="mb-3">
                         <label for="length" class="form-label">Course length</label>
                         <input required type="number" min="0" value="0" id="length" name="length">
+                    </div>
+                    <div class="mb-3">
+                        <label for="disq" class="form-label">Disqualification</label>
+                        <input required type="text" id="disq" name="disq">
                     </div>
                     <div class="mb-3"></div>
                     <div class="modal-footer">
