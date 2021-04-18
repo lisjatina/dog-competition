@@ -9,7 +9,9 @@
 
     <style>
         body {
-            background-image: url('static/img/wallpaper_more_transparent.png');
+            background-image: url('/img/wallpaper_more_transparent.png');
+            /*background-position: 50% 50%;*/
+            background-size: cover;
             background-repeat: no-repeat;
         }
     </style>
@@ -22,7 +24,7 @@
         <div class="col">
 
         </div>
-        <div class="col">
+        <div class="col marginTop whiteBox">
 <!--            method should be get, not to see password and e-mail in query string,
 but with post we get blank list of results-->
             <form name="userData" id="userData" method="post" action="/login">
