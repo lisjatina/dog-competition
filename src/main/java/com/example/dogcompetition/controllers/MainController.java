@@ -37,7 +37,7 @@ public class MainController {
     @GetMapping("/participants")
     public String getListOfParticipants(Model model){
         var dm = new DatabaseManager();
-        model.addAttribute("participants", dm.getDogs());
+        model.addAttribute("participants", dm.getParticipants());
         return "list_of_participants";
     }
 

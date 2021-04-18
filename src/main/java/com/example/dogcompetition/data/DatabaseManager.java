@@ -68,9 +68,11 @@ public class DatabaseManager {
         }
     }
 
-   public List<Dog> getDogs(){
+   public List<Result> getParticipants(){
         var session = factory.openSession();
-       var query = "FROM Dog D ORDER BY D.level asc, D.size DESC";
+       var query = "FROM Result R order by R.dog.level asc, R.dog.size desc ";
+
+       //var query = "FROM Result R ORDER BY R.dog.level asc, R.dog.class DESC";
 
         try {
             return session.createQuery(query).list();

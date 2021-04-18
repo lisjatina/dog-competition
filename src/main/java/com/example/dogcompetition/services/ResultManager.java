@@ -24,6 +24,7 @@ public class ResultManager {
             result.setMistakes(0);
             result.setTimeFaults(0.0);
             result.setTotalFaults(500.0);
+            result.setDisq("DISQ");
         }
         else {
             result.calculateAndSetDogSpeed();
