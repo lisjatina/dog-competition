@@ -58,12 +58,12 @@
         + ', ' + result.getDog().getBreed()}"></td>
         <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
         <td><!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addResultsModal"
-                    th:attr="data-result-id=${result.getId()}">
+            <button type="button" class="btn btn-primary btn-add-results"  th:attr="data-result-id=${result.getId()}">
                 Add results
             </button>
         </td>
-        <td><a th:if="${confirmDelete == 0}" class="btn btn-danger" th:href="${'/confirm/' + result.getId()}" role="button">Delete</a>
+        <td><a th:if="${confirmDelete == 0}" class="btn btn-danger" th:href="${'/confirm/' + result.getId()}"
+               role="button">Delete</a>
             <div th:if="${confirmDelete == result.getId()}">
                 <span>Do you really want to delete this result?</span>
                 <a class="btn btn-primary" th:href="${'/results/update'}">Cancel</a>
@@ -76,7 +76,7 @@
 
 
 <!-- Pop-up window for saving results -->
-<div class="modal fade" id="addResultsModal" tabindex="-1" aria-labelledby="addResultsLabel" aria-hidden="true">
+<div class="modal hide" id="addResultsModal" tabindex="-1" aria-labelledby="addResultsLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -87,44 +87,43 @@
             <div class="modal-body">
                 <form>
                     <input id="resultIdInput" name="resultId" type="hidden">
-                    <div class="mb-3">
+                    <div class="form-group">
                         <label for="dogTime" class="form-label">Dog time:</label>
-                        <input required type="number" min="0" value="0" step="0.001" name="dogTime" id="dogTime"
+                        <input required class="form-control" type="number" min="0" value="0" step="0.001" name="dogTime" id="dogTime"
                                maxlength="100">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="form-group">
                         <label for="faults" class="form-label">Faults:</label>
-                        <input required type="number" min="0" value="0" name="faults" id="faults" maxlength="100">
+                        <input required class="form-control"  type="number" min="0" value="0" name="faults" id="faults" maxlength="100">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="form-group">
                         <label for="refusals" class="form-label">Refusals:</label>
-                        <input required type="number" min="0" value="0" name="refusals" id="refusals" maxlength="100">
+                        <input required class="form-control"  type="number" min="0" value="0" name="refusals" id="refusals" maxlength="100">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="form-group">
                         <label for="speed" class="form-label">Course speed:</label>
-                        <input required type="number" min="0" value="0" step="0.01" name="speed" id="speed"
+                        <input required class="form-control"  type="number" min="0" value="0" step="0.01" name="speed" id="speed"
                                maxlength="100">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="form-group">
                         <label for="length" class="form-label">Course length</label>
-                        <input required type="number" min="0" value="0" id="length" name="length">
+                        <input required class="form-control"  type="number" min="0" value="0" id="length" name="length">
                     </div>
-                    <div class="mb-3">
+                    <div class="form-group">
                         <label for="disq" class="form-label">Disqualification</label>
-                        <input  type="text" id="disq" name="disq">
+                        <input class="form-control" type="text" id="disq" name="disq">
                     </div>
-                    <div class="mb-3"></div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button id="btnSaveResult" type="submit" class="btn btn-primary">Save changes</button>
+                        <button id="btnSaveResult" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>

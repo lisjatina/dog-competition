@@ -1,37 +1,36 @@
 $(document).ready(() => {
-    const modal = $('#addResultsModal');
-    modal.on('show.bs.modal', function (event) {
-        const button = $(event.relatedTarget); // Button that triggered the modal
-        const resultId = button.data('resultId'); // Extract info from data-* attributes
-        console.log('resultId', resultId);
-        modal.find('#resultIdInput').val(resultId);
+    $('.btn-add-results').bind('click', function (obj)
+    {
+     let modal = new bootstrap.Modal(document.getElementById('addResultsModal'));
+     modal.show();
+        console.log($(obj.currentTarget).attr('data-result-id'));
+        $('#resultIdInput').val($(obj.currentTarget).attr('data-result-id'));
     });
 
-    const form = modal.find('form');
-    form.on('submit', event => sendData(event, form, modal));
+    $('#btnSaveResult').bind('click',function ()
+    {
+        const resultId = $('#resultIdInput').val();
+        console.log(resultId);
+        const data = {
+            dogTime: $('#dogTime').val(),
+            faults: $('#faults').val(),
+            refusals: $('#refusals').val(),
+            speed: $('#speed').val(),
+            length: $('#length').val(),
+            disq: $('#disq').val()
+        };
+        $.ajax({
+            contentType: "application/json",
+            type: "PUT",
+            url: `/api/results/${resultId}`,
+            dataType: 'json',
+            data: JSON.stringify(data)
+        }).done(function (response) {
+            console.log(response);
+            let modal2 = bootstrap.Modal.getInstance(document.getElementById('addResultsModal'));
+            modal2.hide();
+        });
+    })
+
 });
 
-
-function sendData(event, form, modal) {
-    event.preventDefault();
-    const resultId = form.find('#resultIdInput').val();
-    const data = {
-        dogTime: form.find('input[name="dogTime"]').val(),
-        faults: form.find('input[name="faults"]').val(),
-        refusals: form.find('input[name="refusals"]').val(),
-        speed: form.find('input[name="speed"]').val(),
-        length: form.find('input[name="length"]').val(),
-        disq: form.find('input[name="disq"]').val()
-    };
-    $.ajax({
-        contentType: "application/json",
-        type: "PUT",
-        url: `/api/results/${resultId}`,
-        dataType: 'json',
-        data: JSON.stringify(data)
-    }).done(function (response) {
-        console.log(response);
-        $('btnSaveResult').bind('click', sendData());
-        modal.hide();
-    });
-}
