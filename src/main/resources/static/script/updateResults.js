@@ -31,6 +31,7 @@ function sendData(event, form, modal) {
         data: JSON.stringify(data)
     }).done(function (response) {
         console.log(response);
-        modal.modal('toggle');
+        $('btnSaveResult').bind('click', sendData());
+        modal.hide();
     });
 }
