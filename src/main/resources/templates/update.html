@@ -74,7 +74,7 @@
         </td>
         <td><a th:if="${confirmDelete == 0}" class="btn btn-danger" th:href="${'/confirm/' + result.getId()}" role="button">Delete</a>
             <div th:if="${confirmDelete == result.getId()}">
-                <span>Do you really want to delete this record?</span>
+                <span>Do you really want to delete this result?</span>
                 <a class="btn btn-primary" th:href="${'/results/update'}">Cancel</a>
                 <a class="btn btn-danger" th:href="${'/delete/' + result.getId()}">Delete</a>
             </div>
