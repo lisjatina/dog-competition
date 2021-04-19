@@ -23,7 +23,7 @@
     </style>
 
 </head>
-<body>
+<body class="background-image">
        <nav class="navigation">
         <div class="links">
             <a class="btn btn-primary" href="/home" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
@@ -42,13 +42,14 @@
 
 
 <div class="container">
+<!-- <img th:src="@{/img/header.jpg}" width="400">-->
+        <h3>Welcome to dog agility competition</h3>
+    <img th:src="@{/img/header.jpg}" align="left" width="400" height="200"/>
+    <p><h6>Date of competition: 20.04.2021</h6></p>
+    <p><h6>Place of competition: Riga, Latvia</h6></p>
+    <p><h6>Organizers: <a href="www.ssac.lv">www.ssac.lv</a></h6></p>
+    <p><h6>Judge: Lidia Belyaeva (Latvia)</h6></p>
 
-    <img th:src="@{/img/header.jpg}" width="400">
-    <h3>Welcome to dog agility competition</h3>
-    <h6>Date of competition: 20.04.2021</h6>
-    <h6>Place of competition: Riga, Latvia</h6>
-    <h6>Organizers: <a href="www.ssac.lv">www.ssac.lv</a></h6>
-    <h6>Judge: Lidia Belyaeva (Latvia)</h6>
 
     <h6>COMPETITION SCHEDULE</h6>
     <table class="table table-bordered" th:width="100px">

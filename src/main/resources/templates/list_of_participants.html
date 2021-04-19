@@ -51,10 +51,10 @@
         <tbody>
         <tr th:each="participant: ${participants} ">
             <th scope="row" th:text="${participantStat.index+1}"></th>
-            <td th:text="${participant.getHandler().getName()+ ' ' + participant.getHandler().getSurname()}"></td>
-            <td th:text="${participant.getPedigreeName() + ', ' + participant.getPetName() + ', '
-            + participant.getBreed()}"></td>
-            <td th:text="${participant.getLevel()+ ' ' + participant.getSize()}"></td>
+            <td th:text="${participant.getDog().getHandler().getName()+ ' ' + participant.getDog().getHandler().getSurname()}"></td>
+            <td th:text="${participant.getDog().getPedigreeName() + ', ' + participant.getDog().getPetName() + ', '
+            + participant.getDog().getBreed()}"></td>
+            <td th:text="${participant.getDog().getLevel()+ ' ' + participant.getDog().getSize()}"></td>
         </tr>
         </tbody>
     </table>
