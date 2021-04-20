@@ -29,6 +29,7 @@
             Home</a>
         <a class="btn btn-primary" href="/participants" role="button">Participants</a>
         <a class="btn btn-primary" href="/results" role="button">Results</a>
+        <a class="btn btn-warning btn-save-course"  role="button">Save course</a>
         <a class="btn btn-primary" href="/home" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open"
                  viewBox="0 0 16 16">
@@ -105,24 +106,56 @@
                         <input required class="form-control"  type="number" min="0" value="0" name="refusals" id="refusals" maxlength="100">
                     </div>
 
-                    <div class="form-group">
-                        <label for="speed" class="form-label">Course speed:</label>
-                        <input required class="form-control"  type="number" min="0" value="0" step="0.01" name="speed" id="speed"
-                               maxlength="100">
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="speed" class="form-label">Course speed:</label>-->
+<!--                        <input required class="form-control"  type="number" min="0" value="0" step="0.01" name="speed" id="speed"-->
+<!--                               maxlength="100">-->
+<!--                    </div>-->
 
+<!--                    <div class="form-group">-->
+<!--                        <label for="length" class="form-label">Course length</label>-->
+<!--                        <input required class="form-control"  type="number" min="0" value="0" id="length" name="length">-->
+<!--                    </div>-->
                     <div class="form-group">
-                        <label for="length" class="form-label">Course length</label>
-                        <input required class="form-control"  type="number" min="0" value="0" id="length" name="length">
-                    </div>
-                    <div class="form-group">
-                        <label for="disq" class="form-label">Disqualification</label>
+                        <label for="disq" class="form-label">Notes</label>
                         <input class="form-control" type="text" id="disq" name="disq">
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button id="btnSaveResult" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--pop-up for saving course-->
+<div class="modal hide" id="saveCourse" tabindex="-1" aria-labelledby="addResultsLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input id="courseSettings" name="courseSettings" type="hidden">
+
+                    <div class="form-group">
+                        <label for="courseLength" class="form-label">Course length</label>
+                        <input required class="form-control"  type="number" min="0" value="0" id="courseLength" name="courseLength">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="courseSpeed" class="form-label">Course speed:</label>
+                        <input required class="form-control"  type="number" min="0" value="0" step="0.01" name="courseSpeed" id="courseSpeed"
+                               maxlength="100">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button id="btnSaveCourse" class="btn btn-primary" type="submit">Save changes</button>
                     </div>
                 </form>
             </div>

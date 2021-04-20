@@ -2,6 +2,7 @@ package com.example.dogcompetition.controllers;
 
 import com.example.dogcompetition.data.DatabaseManager;
 import com.example.dogcompetition.data.Result;
+import com.example.dogcompetition.dto.CourseDto;
 import com.example.dogcompetition.dto.ResultDto;
 import com.example.dogcompetition.services.ResultManager;
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,13 @@ public class ApiController {
         var rm = new ResultManager();
         rm.updateResult(id,dto);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // update all results
+    @PutMapping("/results")
+    public void setCourseData(@RequestBody CourseDto dto){
+        var rm = new ResultManager();
+        rm.setCourseDetails(dto);
     }
 
     @DeleteMapping("/results/{id}")

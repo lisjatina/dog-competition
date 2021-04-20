@@ -9,8 +9,8 @@ public class ResultDto {
     private Double dogTime;
     private Integer faults;
     private Integer refusals;
-    private Double speed;
-    private Integer length;
+//    private Double speed;
+//    private Integer length;
     private String disq;
 
 }

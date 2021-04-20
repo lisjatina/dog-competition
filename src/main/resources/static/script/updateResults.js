@@ -15,8 +15,8 @@ $(document).ready(() => {
             dogTime: $('#dogTime').val(),
             faults: $('#faults').val(),
             refusals: $('#refusals').val(),
-            speed: $('#speed').val(),
-            length: $('#length').val(),
+            // speed: $('#speed').val(),
+            // length: $('#length').val(),
             disq: $('#disq').val()
         };
         $.ajax({
@@ -28,6 +28,34 @@ $(document).ready(() => {
         }).done(function (response) {
             console.log(response);
             let modal2 = bootstrap.Modal.getInstance(document.getElementById('addResultsModal'));
+            modal2.hide();
+        });
+    });
+});
+
+// course button
+$(document).ready(() => {
+    $('.btn-save-course').bind('click', function (obj)
+    {
+        let modal = new bootstrap.Modal(document.getElementById('saveCourse'));
+        modal.show();
+      });
+
+    $('#btnSaveCourse').bind('click',function ()
+    {
+        const data = {
+            courseSpeed: $('#courseSpeed').val(),
+            courseLength: $('#courseLength').val(),
+        };
+        $.ajax({
+            contentType: "application/json",
+            type: "PUT",
+            url: `/api/results`,
+            dataType: 'json',
+            data: JSON.stringify(data)
+        }).done(function (response) {
+            console.log(response);
+            let modal2 = bootstrap.Modal.getInstance(document.getElementById('saveCourse'));
             modal2.hide();
         });
     });

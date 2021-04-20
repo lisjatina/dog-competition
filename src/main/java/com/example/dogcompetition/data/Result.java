@@ -111,8 +111,8 @@ public class Result {
 
     public boolean dogIsAbsent() {
         if (disq.equalsIgnoreCase("dns")) {
-                        return true;
-                }
+            return true;
+        }
         return false;
     }
 }
