@@ -39,13 +39,14 @@
     </div>
 </nav>
 
-<!--or maybe method = post?-->
+
 <table class="table table-striped">
     <thead>
     <tr>
         <th scope="col">#</th>
         <th scope="col">Dog</th>
         <th scope="col">Handler</th>
+        <th scope="col">Class</th>
         <th scope="col">Add Results</th>
         <th scope="col" width="500px">Delete Results</th>
     </tr>
@@ -57,6 +58,7 @@
         <td th:text="${result.getDog().getPetName()+ ', ' + result.getDog().getPedigreeName()
         + ', ' + result.getDog().getBreed()}"></td>
         <td th:text="${result.getDog().getHandler().getName() +' ' + result.getDog().getHandler().getSurname()}"></td>
+        <td th:text="${result.getDog().getLevel()+' ' + result.getDog().getSize()}"></td>
         <td><!-- Button trigger modal -->
             <button type="button" class="btn btn-primary btn-add-results"  th:attr="data-result-id=${result.getId()}">
                 Add results

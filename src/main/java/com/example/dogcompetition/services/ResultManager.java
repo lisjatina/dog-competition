@@ -18,20 +18,20 @@ public class ResultManager {
             result.setDisq(dto.getDisq());
         if(result.disqForExceedingTime() || result.disqualified() || result.disqForThreeRefusals()){
             result.setTime(500.0);
-            result.setRefusals(0);
-            result.setFaults(0);
-            result.setSpeed(0.0);
-            result.setMistakes(0);
-            result.setTimeFaults(0.0);
+            result.setRefusals(null);
+            result.setFaults(null);
+            result.setSpeed(null);
+            result.setMistakes(null);
+            result.setTimeFaults(null);
             result.setTotalFaults(500.0);
             result.setDisq("DISQ");
         }else if(result.dogIsAbsent()){
             result.setTime(500.0);
-            result.setRefusals(0);
-            result.setFaults(0);
-            result.setSpeed(0.0);
-            result.setMistakes(0);
-            result.setTimeFaults(0.0);
+            result.setRefusals(null);
+            result.setFaults(null);
+            result.setSpeed(null);
+            result.setMistakes(null);
+            result.setTimeFaults(null);
             result.setTotalFaults(500.0);
             result.setDisq("DNS");
         }
