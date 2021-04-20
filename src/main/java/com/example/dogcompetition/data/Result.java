@@ -109,17 +109,10 @@ public class Result {
         }
     }
 
-    public void dogIsAbsent() {
+    public boolean dogIsAbsent() {
         if (disq.equalsIgnoreCase("dns")) {
-            {
-                this.time = 500.0;
-                this.disq = "DNS";
-                this.faults = 0;
-                this.refusals = 0;
-                this.speed = 0.0;
-                this.timeFaults = 0.0;
-                this.totalFaults = 500.0;
-            }
-        }
+                        return true;
+                }
+        return false;
     }
 }

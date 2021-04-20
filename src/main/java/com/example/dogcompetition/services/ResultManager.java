@@ -25,6 +25,15 @@ public class ResultManager {
             result.setTimeFaults(0.0);
             result.setTotalFaults(500.0);
             result.setDisq("DISQ");
+        }else if(result.dogIsAbsent()){
+            result.setTime(500.0);
+            result.setRefusals(0);
+            result.setFaults(0);
+            result.setSpeed(0.0);
+            result.setMistakes(0);
+            result.setTimeFaults(0.0);
+            result.setTotalFaults(500.0);
+            result.setDisq("DNS");
         }
         else {
             result.calculateAndSetDogSpeed();

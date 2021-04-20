@@ -30,4 +30,35 @@ public class Tests {
         result.setTime(4.0);
         Assert.assertEquals(dogTime,result.calculateAndSetDogSpeed());
     }
+
+    @Test
+    public void check_calculate_mistake_equals(){
+        Integer mistakes = ((2+3)*5);
+        Result result = new Result();
+        result.setFaults(3);
+        result.setRefusals(2);
+        Assert.assertEquals(mistakes,result.calcMistakes());
+    }
+
+    @Test
+    public void check_calculate_time_faults_equals(){
+        Double timeFaults = 10.0;
+        Result result = new Result();
+        result.setTime(50.0);
+        result.setCourseLength(200);
+        result.setCourseSpeed(5.0);
+        Assert.assertEquals(timeFaults,result.calcAndSetTimeFaults());
+    }
+
+    @Test
+    public void check_calculate_total_faults_equals(){
+        Double totalFaults = ((2+3)*5) +10.0;
+        Result result = new Result();
+        result.setFaults(3);
+        result.setRefusals(2);
+        result.setTime(50.0);
+        result.setCourseLength(200);
+        result.setCourseSpeed(5.0);
+        Assert.assertEquals(totalFaults,result.calcTotalFaults());
+    }
 }
