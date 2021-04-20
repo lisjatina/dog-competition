@@ -114,7 +114,7 @@ public class DatabaseManager {
         var session = factory.openSession();
 
         try {
-            return session.createQuery("FROM Result").list();
+            return session.createQuery("FROM Result R order by R.dog.level asc, R.dog.size desc ").list();
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {

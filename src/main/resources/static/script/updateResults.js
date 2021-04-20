@@ -30,7 +30,6 @@ $(document).ready(() => {
             let modal2 = bootstrap.Modal.getInstance(document.getElementById('addResultsModal'));
             modal2.hide();
         });
-    })
-
+    });
 });
 

@@ -16,7 +16,7 @@ public class ResultManager {
             result.setRefusals(dto.getRefusals());
             result.setFaults(dto.getFaults());
             result.setDisq(dto.getDisq());
-        if(result.disqForExceedingTime() || result.disqualified()){
+        if(result.disqForExceedingTime() || result.disqualified() || result.disqForThreeRefusals()){
             result.setTime(500.0);
             result.setRefusals(0);
             result.setFaults(0);
